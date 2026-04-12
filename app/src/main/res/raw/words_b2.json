@@ -1,0 +1,227 @@
+[
+  {
+    "english": "accurate",
+    "englishType": "adjective",
+    "englishSentence": "We need accurate information to proceed.",
+    "level": "B2",
+    "turkish": "dogru, kesin",
+    "turkishType": "sifat",
+    "turkishSentence": "Devam etmek icin dogru bilgiye ihtiyacimiz var."
+  },
+  {
+    "english": "brief",
+    "englishType": "adjective",
+    "englishSentence": "He gave a brief presentation about the project.",
+    "level": "B2",
+    "turkish": "kisa, oz",
+    "turkishType": "sifat",
+    "turkishSentence": "Proje hakkinda kisa bir sunum yapti."
+  },
+  {
+    "english": "crucial",
+    "englishType": "adjective",
+    "englishSentence": "Water is crucial for human survival.",
+    "level": "B2",
+    "turkish": "cok onemli, kritik",
+    "turkishType": "sifat",
+    "turkishSentence": "Su, insanin hayatta kalmasi icin cok onemlidir."
+  },
+  {
+    "english": "determine",
+    "englishType": "verb",
+    "englishSentence": "Your effort will determine your success.",
+    "level": "B2",
+    "turkish": "belirlemek",
+    "turkishType": "fiil",
+    "turkishSentence": "Basarini senin caban belirleyecek."
+  },
+  {
+    "english": "emphasize",
+    "englishType": "verb",
+    "englishSentence": "The teacher emphasized the importance of homework.",
+    "level": "B2",
+    "turkish": "vurgulamak",
+    "turkishType": "fiil",
+    "turkishSentence": "Ogretmen odevin onemini vurguladi."
+  },
+  {
+    "english": "fluent",
+    "englishType": "adjective",
+    "englishSentence": "She is fluent in both English and Spanish.",
+    "level": "B2",
+    "turkish": "akici",
+    "turkishType": "sifat",
+    "turkishSentence": "Hem Ingilizce hem Ispanyolca akici konusur."
+  },
+  {
+    "english": "genuine",
+    "englishType": "adjective",
+    "englishSentence": "This is a genuine leather bag.",
+    "level": "B2",
+    "turkish": "hakiki, gercek",
+    "turkishType": "sifat",
+    "turkishSentence": "Bu hakiki bir deri cantadir."
+  },
+  {
+    "english": "hesitate",
+    "englishType": "verb",
+    "englishSentence": "Please do not hesitate to ask questions.",
+    "level": "B2",
+    "turkish": "tereddut etmek",
+    "turkishType": "fiil",
+    "turkishSentence": "Lutfen soru sormaktan tereddut etmeyin."
+  },
+  {
+    "english": "investigate",
+    "englishType": "verb",
+    "englishSentence": "The police will investigate the crime scene.",
+    "level": "B2",
+    "turkish": "sorusturmak, arastirmak",
+    "turkishType": "fiil",
+    "turkishSentence": "Polis suc mahalini arastiracak."
+  },
+  {
+    "english": "justify",
+    "englishType": "verb",
+    "englishSentence": "How do you justify your bad behavior?",
+    "level": "B2",
+    "turkish": "hakli cikarmak",
+    "turkishType": "fiil",
+    "turkishSentence": "Kotu davranisini nasil hakli cikariyorsun?"
+  },
+  {
+    "english": "maintain",
+    "englishType": "verb",
+    "englishSentence": "It is important to maintain a healthy diet.",
+    "level": "B2",
+    "turkish": "surdurmek, korumak",
+    "turkishType": "fiil",
+    "turkishSentence": "Saglikli bir beslenmeyi surdurmek onemlidir."
+  },
+  {
+    "english": "neglect",
+    "englishType": "verb",
+    "englishSentence": "Don't neglect your studies if you want to pass.",
+    "level": "B2",
+    "turkish": "ihmal etmek",
+    "turkishType": "fiil",
+    "turkishSentence": "Gecmek istiyorsan derslerini ihmal etme."
+  },
+  {
+    "english": "observe",
+    "englishType": "verb",
+    "englishSentence": "Scientists observe animal behavior in the wild.",
+    "level": "B2",
+    "turkish": "gozlemlemek",
+    "turkishType": "fiil",
+    "turkishSentence": "Bilim insanlari vahsi hayatta hayvan davranislarini gozlemler."
+  },
+  {
+    "english": "persuade",
+    "englishType": "verb",
+    "englishSentence": "I tried to persuade him to come with us.",
+    "level": "B2",
+    "turkish": "ikna etmek",
+    "turkishType": "fiil",
+    "turkishSentence": "Onu bizimle gelmeye ikna etmeye calistim."
+  },
+  {
+    "english": "rapid",
+    "englishType": "adjective",
+    "englishSentence": "There has been rapid growth in the tech industry.",
+    "level": "B2",
+    "turkish": "hizli",
+    "turkishType": "sifat",
+    "turkishSentence": "Teknoloji sektorunde hizli bir buyume oldu."
+  },
+  {
+    "english": "recognize",
+    "englishType": "verb",
+    "englishSentence": "I didn't recognize you with your new glasses.",
+    "level": "B2",
+    "turkish": "tanimak",
+    "turkishType": "fiil",
+    "turkishSentence": "Yeni gozlugunle seni tanimadim."
+  },
+  {
+    "english": "significant",
+    "englishType": "adjective",
+    "englishSentence": "There is a significant difference between the two models.",
+    "level": "B2",
+    "turkish": "onemli, belirgin",
+    "turkishType": "sifat",
+    "turkishSentence": "Iki model arasinda belirgin bir fark var."
+  },
+  {
+    "english": "threaten",
+    "englishType": "verb",
+    "englishSentence": "The dark clouds threaten to bring rain.",
+    "level": "B2",
+    "turkish": "tehdit etmek",
+    "turkishType": "fiil",
+    "turkishSentence": "Karanlik bulutlar yagmur getirmekle tehdit ediyor."
+  },
+  {
+    "english": "unique",
+    "englishType": "adjective",
+    "englishSentence": "Everyone's fingerprint is completely unique.",
+    "level": "B2",
+    "turkish": "essiz, benzersiz",
+    "turkishType": "sifat",
+    "turkishSentence": "Herkesin parmak izi tamamen benzersizdir."
+  },
+  {
+    "english": "valid",
+    "englishType": "adjective",
+    "englishSentence": "You must have a valid passport to travel.",
+    "level": "B2",
+    "turkish": "gecerli",
+    "turkishType": "sifat",
+    "turkishSentence": "Seyahat icin gecerli bir pasaportunuz olmali."
+  },
+  {
+    "english": "witness",
+    "englishType": "noun",
+    "englishSentence": "She was a witness to the accident.",
+    "level": "B2",
+    "turkish": "tanik",
+    "turkishType": "isim",
+    "turkishSentence": "O kazanin tanigiydi."
+  },
+  {
+    "english": "anxious",
+    "englishType": "adjective",
+    "englishSentence": "He felt anxious before his job interview.",
+    "level": "B2",
+    "turkish": "endiseli",
+    "turkishType": "sifat",
+    "turkishSentence": "Is gorusmesinden once endiseliydi."
+  },
+  {
+    "english": "bilingual",
+    "englishType": "adjective",
+    "englishSentence": "Growing up in Canada, she became bilingual.",
+    "level": "B2",
+    "turkish": "iki dilli",
+    "turkishType": "sifat",
+    "turkishSentence": "Kanada'da buyuyerek iki dilli oldu."
+  },
+  {
+    "english": "capacity",
+    "englishType": "noun",
+    "englishSentence": "The stadium has a seating capacity of 50,000.",
+    "level": "B2",
+    "turkish": "kapasite",
+    "turkishType": "isim",
+    "turkishSentence": "Stadyumun oturma kapasitesi 50.000'dir."
+  },
+  {
+    "english": "delay",
+    "englishType": "verb",
+    "englishSentence": "The flight was delayed due to bad weather.",
+    "level": "B2",
+    "turkish": "gecikmek, ertelemek",
+    "turkishType": "fiil",
+    "turkishSentence": "Ucus kotu hava nedeniyle ertelendi."
+  }
+]

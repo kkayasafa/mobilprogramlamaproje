@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "141509616391",
+    "project_id": "mobilprogramlama-aff58",
+    "storage_bucket": "mobilprogramlama-aff58.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:141509616391:android:9e5f9351fa6a03f7465ba2",
+        "android_client_info": {
+          "package_name": "com.example.proje2"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "141509616391-ceqtha1lt6sl7i8f8j639m7p8n564bu9.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.proje2",
+            "certificate_hash": "320a226c9a9af9736c5ac10eab1427b9d45bf949"
+          }
+        },
+        {
+          "client_id": "141509616391-855m0iupdif1ipo0fmro6ouefc1mfh93.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAlaeHqwyDm5O9-RuApTUr3CA9KUxs0vWs"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "141509616391-855m0iupdif1ipo0fmro6ouefc1mfh93.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

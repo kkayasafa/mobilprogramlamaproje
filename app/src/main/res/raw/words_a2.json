@@ -1,0 +1,227 @@
+[
+  {
+    "english": "accident",
+    "englishType": "noun",
+    "englishSentence": "I saw a bad accident on the road.",
+    "level": "A2",
+    "turkish": "kaza",
+    "turkishType": "isim",
+    "turkishSentence": "Yolda kotu bir kaza gordum."
+  },
+  {
+    "english": "careful",
+    "englishType": "adjective",
+    "englishSentence": "Please be careful with that glass.",
+    "level": "A2",
+    "turkish": "dikkatli",
+    "turkishType": "sifat",
+    "turkishSentence": "Lutfen o bardaga dikkatli davran."
+  },
+  {
+    "english": "decide",
+    "englishType": "verb",
+    "englishSentence": "I can't decide what to wear.",
+    "level": "A2",
+    "turkish": "karar vermek",
+    "turkishType": "fiil",
+    "turkishSentence": "Ne giyecegime karar veremiyorum."
+  },
+  {
+    "english": "empty",
+    "englishType": "adjective",
+    "englishSentence": "The room was completely empty.",
+    "level": "A2",
+    "turkish": "bos",
+    "turkishType": "sifat",
+    "turkishSentence": "Oda tamamen bostu."
+  },
+  {
+    "english": "explain",
+    "englishType": "verb",
+    "englishSentence": "Can you explain this rule to me?",
+    "level": "A2",
+    "turkish": "aciklamak",
+    "turkishType": "fiil",
+    "turkishSentence": "Bu kuralı bana aciklayabilir misin?"
+  },
+  {
+    "english": "foreign",
+    "englishType": "adjective",
+    "englishSentence": "She speaks three foreign languages.",
+    "level": "A2",
+    "turkish": "yabanci",
+    "turkishType": "sifat",
+    "turkishSentence": "O uc yabanci dil konusur."
+  },
+  {
+    "english": "guess",
+    "englishType": "verb",
+    "englishSentence": "Can you guess my age?",
+    "level": "A2",
+    "turkish": "tahmin etmek",
+    "turkishType": "fiil",
+    "turkishSentence": "Yasimi tahmin edebilir misin?"
+  },
+  {
+    "english": "happen",
+    "englishType": "verb",
+    "englishSentence": "What will happen next?",
+    "level": "A2",
+    "turkish": "olmak, meydana gelmek",
+    "turkishType": "fiil",
+    "turkishSentence": "Sirada ne olacak?"
+  },
+  {
+    "english": "island",
+    "englishType": "noun",
+    "englishSentence": "They spent their holiday on an island.",
+    "level": "A2",
+    "turkish": "ada",
+    "turkishType": "isim",
+    "turkishSentence": "Tatilini bir adada gecirdiler."
+  },
+  {
+    "english": "join",
+    "englishType": "verb",
+    "englishSentence": "Would you like to join us for dinner?",
+    "level": "A2",
+    "turkish": "katilmak",
+    "turkishType": "fiil",
+    "turkishSentence": "Aksam yemegine bize katilmak ister misin?"
+  },
+  {
+    "english": "knowledge",
+    "englishType": "noun",
+    "englishSentence": "Reading books improves your knowledge.",
+    "level": "A2",
+    "turkish": "bilgi",
+    "turkishType": "isim",
+    "turkishSentence": "Kitap okumak bilginizi artirir."
+  },
+  {
+    "english": "lazy",
+    "englishType": "adjective",
+    "englishSentence": "He is too lazy to clean his room.",
+    "level": "A2",
+    "turkish": "tembel",
+    "turkishType": "sifat",
+    "turkishSentence": "Odasini temizlemek icin cok tembel."
+  },
+  {
+    "english": "magazine",
+    "englishType": "noun",
+    "englishSentence": "I bought a fashion magazine.",
+    "level": "A2",
+    "turkish": "dergi",
+    "turkishType": "isim",
+    "turkishSentence": "Bir moda dergisi satin aldim."
+  },
+  {
+    "english": "necessary",
+    "englishType": "adjective",
+    "englishSentence": "It is necessary to wear a seatbelt.",
+    "level": "A2",
+    "turkish": "gerekli",
+    "turkishType": "sifat",
+    "turkishSentence": "Emniyet kemeri takmak gereklidir."
+  },
+  {
+    "english": "offer",
+    "englishType": "verb",
+    "englishSentence": "They offer a good salary for this job.",
+    "level": "A2",
+    "turkish": "teklif etmek, sunmak",
+    "turkishType": "fiil",
+    "turkishSentence": "Bu is icin iyi bir maas sunuyorlar."
+  },
+  {
+    "english": "passenger",
+    "englishType": "noun",
+    "englishSentence": "The train was full of passengers.",
+    "level": "A2",
+    "turkish": "yolcu",
+    "turkishType": "isim",
+    "turkishSentence": "Tren yolcularla doluydu."
+  },
+  {
+    "english": "quiet",
+    "englishType": "adjective",
+    "englishSentence": "Please keep quiet in the library.",
+    "level": "A2",
+    "turkish": "sessiz",
+    "turkishType": "sifat",
+    "turkishSentence": "Lutfen kutuphanede sessiz olun."
+  },
+  {
+    "english": "receive",
+    "englishType": "verb",
+    "englishSentence": "I didn't receive your email.",
+    "level": "A2",
+    "turkish": "almak, teslim almak",
+    "turkishType": "fiil",
+    "turkishSentence": "E-postani almadim."
+  },
+  {
+    "english": "secret",
+    "englishType": "noun",
+    "englishSentence": "Can you keep a secret?",
+    "level": "A2",
+    "turkish": "sir",
+    "turkishType": "isim",
+    "turkishSentence": "Bir sir saklayabilir misin?"
+  },
+  {
+    "english": "terrible",
+    "englishType": "adjective",
+    "englishSentence": "The weather was terrible yesterday.",
+    "level": "A2",
+    "turkish": "berbat",
+    "turkishType": "sifat",
+    "turkishSentence": "Dun hava berbatti."
+  },
+  {
+    "english": "uniform",
+    "englishType": "noun",
+    "englishSentence": "Nurses usually wear a white uniform.",
+    "level": "A2",
+    "turkish": "uniforma",
+    "turkishType": "isim",
+    "turkishSentence": "Hemsireler genellikle beyaz uniforma giyer."
+  },
+  {
+    "english": "solve",
+    "englishType": "verb",
+    "englishSentence": "I need help to solve this math problem.",
+    "level": "A2",
+    "turkish": "cozmek",
+    "turkishType": "fiil",
+    "turkishSentence": "Bu matematik problemini cozmek icin yardima ihtiyacim var."
+  },
+  {
+    "english": "bridge",
+    "englishType": "noun",
+    "englishSentence": "We walked across the old bridge.",
+    "level": "A2",
+    "turkish": "kopru",
+    "turkishType": "isim",
+    "turkishSentence": "Eski koprunun uzerinden yuruduk."
+  },
+  {
+    "english": "celebrate",
+    "englishType": "verb",
+    "englishSentence": "How do you celebrate your birthday?",
+    "level": "A2",
+    "turkish": "kutlamak",
+    "turkishType": "fiil",
+    "turkishSentence": "Dogum gununu nasil kutluyorsun?"
+  },
+  {
+    "english": "dangerous",
+    "englishType": "adjective",
+    "englishSentence": "It is dangerous to walk here at night.",
+    "level": "A2",
+    "turkish": "tehlikeli",
+    "turkishType": "sifat",
+    "turkishSentence": "Burada gece yurume tehlikelidir."
+  }
+]

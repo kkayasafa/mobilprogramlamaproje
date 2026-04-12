@@ -1,0 +1,227 @@
+[
+  {
+    "english": "apple",
+    "englishType": "noun",
+    "englishSentence": "I eat an apple every day.",
+    "level": "A1",
+    "turkish": "elma",
+    "turkishType": "isim",
+    "turkishSentence": "Her gün bir elma yerim."
+  },
+  {
+    "english": "book",
+    "englishType": "noun",
+    "englishSentence": "This book is very interesting.",
+    "level": "A1",
+    "turkish": "kitap",
+    "turkishType": "isim",
+    "turkishSentence": "Bu kitap cok ilginc."
+  },
+  {
+    "english": "run",
+    "englishType": "verb",
+    "englishSentence": "They run in the park every morning.",
+    "level": "A1",
+    "turkish": "kosmak",
+    "turkishType": "fiil",
+    "turkishSentence": "Her sabah parkta kosarlar."
+  },
+  {
+    "english": "happy",
+    "englishType": "adjective",
+    "englishSentence": "She is a happy child.",
+    "level": "A1",
+    "turkish": "mutlu",
+    "turkishType": "sifat",
+    "turkishSentence": "O mutlu bir cocuk."
+  },
+  {
+    "english": "water",
+    "englishType": "noun",
+    "englishSentence": "Can I have some water, please?",
+    "level": "A1",
+    "turkish": "su",
+    "turkishType": "isim",
+    "turkishSentence": "Biraz su alabilir miyim, lutfen?"
+  },
+  {
+    "english": "house",
+    "englishType": "noun",
+    "englishSentence": "Their house is very big.",
+    "level": "A1",
+    "turkish": "ev",
+    "turkishType": "isim",
+    "turkishSentence": "Onlarin evi cok buyuk."
+  },
+  {
+    "english": "read",
+    "englishType": "verb",
+    "englishSentence": "I read a book before sleep.",
+    "level": "A1",
+    "turkish": "okumak",
+    "turkishType": "fiil",
+    "turkishSentence": "Uyumadan once bir kitap okurum."
+  },
+  {
+    "english": "cold",
+    "englishType": "adjective",
+    "englishSentence": "The weather is cold today.",
+    "level": "A1",
+    "turkish": "soguk",
+    "turkishType": "sifat",
+    "turkishSentence": "Hava bugun soguk."
+  },
+  {
+    "english": "cat",
+    "englishType": "noun",
+    "englishSentence": "The cat is sleeping on the sofa.",
+    "level": "A1",
+    "turkish": "kedi",
+    "turkishType": "isim",
+    "turkishSentence": "Kedi kanepede uyuyor."
+  },
+  {
+    "english": "play",
+    "englishType": "verb",
+    "englishSentence": "Children play in the garden.",
+    "level": "A1",
+    "turkish": "oynamak",
+    "turkishType": "fiil",
+    "turkishSentence": "Cocuklar bahcede oynar."
+  },
+  {
+    "english": "fast",
+    "englishType": "adjective",
+    "englishSentence": "He drives a fast car.",
+    "level": "A1",
+    "turkish": "hizli",
+    "turkishType": "sifat",
+    "turkishSentence": "O hizli bir araba surer."
+  },
+  {
+    "english": "school",
+    "englishType": "noun",
+    "englishSentence": "Students go to school by bus.",
+    "level": "A1",
+    "turkish": "okul",
+    "turkishType": "isim",
+    "turkishSentence": "Ogrenciler okula otobusle gider."
+  },
+  {
+    "english": "write",
+    "englishType": "verb",
+    "englishSentence": "Please write your name here.",
+    "level": "A1",
+    "turkish": "yazmak",
+    "turkishType": "fiil",
+    "turkishSentence": "Lutfen isminizi buraya yazin."
+  },
+  {
+    "english": "beautiful",
+    "englishType": "adjective",
+    "englishSentence": "She has a beautiful dress.",
+    "level": "A1",
+    "turkish": "guzel",
+    "turkishType": "sifat",
+    "turkishSentence": "Onun guzel bir elbisesi var."
+  },
+  {
+    "english": "friend",
+    "englishType": "noun",
+    "englishSentence": "Ali is my best friend.",
+    "level": "A1",
+    "turkish": "arkadas",
+    "turkishType": "isim",
+    "turkishSentence": "Ali benim en iyi arkadasim."
+  },
+  {
+    "english": "eat",
+    "englishType": "verb",
+    "englishSentence": "We eat dinner at 7 PM.",
+    "level": "A1",
+    "turkish": "yemek",
+    "turkishType": "fiil",
+    "turkishSentence": "Aksam yemegini saat 7'de yeriz."
+  },
+  {
+    "english": "good",
+    "englishType": "adjective",
+    "englishSentence": "This is a good movie.",
+    "level": "A1",
+    "turkish": "iyi",
+    "turkishType": "sifat",
+    "turkishSentence": "Bu iyi bir film."
+  },
+  {
+    "english": "city",
+    "englishType": "noun",
+    "englishSentence": "Istanbul is a big city.",
+    "level": "A1",
+    "turkish": "sehir",
+    "turkishType": "isim",
+    "turkishSentence": "Istanbul buyuk bir sehirdir."
+  },
+  {
+    "english": "sleep",
+    "englishType": "verb",
+    "englishSentence": "I sleep for eight hours.",
+    "level": "A1",
+    "turkish": "uyumak",
+    "turkishType": "fiil",
+    "turkishSentence": "Sekiz saat uyurum."
+  },
+  {
+    "english": "hot",
+    "englishType": "adjective",
+    "englishSentence": "The tea is too hot.",
+    "level": "A1",
+    "turkish": "sicak",
+    "turkishType": "sifat",
+    "turkishSentence": "Cay cok sicak."
+  },
+  {
+    "english": "door",
+    "englishType": "noun",
+    "englishSentence": "Please close the door.",
+    "level": "A1",
+    "turkish": "kapi",
+    "turkishType": "isim",
+    "turkishSentence": "Lutfen kapiyi kapatin."
+  },
+  {
+    "english": "walk",
+    "englishType": "verb",
+    "englishSentence": "I walk to work every day.",
+    "level": "A1",
+    "turkish": "yurumek",
+    "turkishType": "fiil",
+    "turkishSentence": "Her gun ise yuruyerek giderim."
+  },
+  {
+    "english": "new",
+    "englishType": "adjective",
+    "englishSentence": "I bought a new phone.",
+    "level": "A1",
+    "turkish": "yeni",
+    "turkishType": "sifat",
+    "turkishSentence": "Yeni bir telefon satin aldim."
+  },
+  {
+    "english": "time",
+    "englishType": "noun",
+    "englishSentence": "We don't have much time.",
+    "level": "A1",
+    "turkish": "zaman",
+    "turkishType": "isim",
+    "turkishSentence": "Cok fazla zamanimiz yok."
+  },
+  {
+    "english": "work",
+    "englishType": "verb",
+    "englishSentence": "He works in a bank.",
+    "level": "A1",
+    "turkish": "calismak",
+    "turkishType": "fiil",
+    "turkishSentence": "O bir bankada calisir."
+  }
+]

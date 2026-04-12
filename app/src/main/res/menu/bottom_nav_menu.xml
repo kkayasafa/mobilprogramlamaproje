@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item
+        android:id="@+id/nav_learn"
+        android:icon="@drawable/outline_cards_stack_24"
+        android:title="Öğren" />
+    <item
+        android:id="@+id/nav_stats"
+        android:icon="@drawable/outline_bar_chart_24"
+        android:title="İstatistikler" />
+    <item
+        android:id="@+id/nav_log"
+        android:icon="@drawable/outline_book_6_24"
+        android:title="Kayıt Defteri" />
+</menu>
