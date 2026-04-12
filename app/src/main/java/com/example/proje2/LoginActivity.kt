@@ -117,7 +117,7 @@ class LoginActivity : AppCompatActivity() {
     }
 
     private fun navigateToMain() {
-        startActivity(Intent(this, UserActivity::class.java))
+        startActivity(Intent(this, MainActivity::class.java))
         finish()
     }
 

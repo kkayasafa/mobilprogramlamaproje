@@ -4,6 +4,7 @@ import android.content.Context
 import android.content.Intent
 import android.os.Bundle
 import android.util.Log
+import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import com.example.proje2.databinding.ActivityAdminBinding
 import com.google.firebase.firestore.FirebaseFirestore
@@ -19,19 +20,40 @@ class AdminActivity : AppCompatActivity() {
         binding = ActivityAdminBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        // Verileri bir kez yüklemek için SharedPreferences kullanıyoruz
-        val sharedPref = getSharedPreferences("AppPrefs", Context.MODE_PRIVATE)
-        val isDataLoaded = sharedPref.getBoolean("isDataLoaded", false)
+        checkAndUploadWords()
+        setupButtons()
+    }
 
-        if (!isDataLoaded) {
-            uploadAllWords()
-            with(sharedPref.edit()) {
-                putBoolean("isDataLoaded", true)
-                apply()
+    private fun checkAndUploadWords() {
+        val levels = listOf("A1", "A2", "B1", "B2", "C1", "C2")
+        val sharedPref = getSharedPreferences("AppPrefs", Context.MODE_PRIVATE)
+
+        levels.forEach { level ->
+            val isLevelLoaded = sharedPref.getBoolean("isLoaded_$level", false)
+            if (!isLevelLoaded) {
+                db.collection("words_$level").limit(1).get()
+                    .addOnSuccessListener { documents ->
+                        if (documents.isEmpty) {
+                            // Veritabanı boşsa yükle
+                            val resourceId = when(level) {
+                                "A1" -> R.raw.words_a1
+                                "A2" -> R.raw.words_a2
+                                "B1" -> R.raw.words_b1
+                                "B2" -> R.raw.words_b2
+                                "C1" -> R.raw.words_c1
+                                "C2" -> R.raw.words_c2
+                                else -> null
+                            }
+                            resourceId?.let {
+                                uploadWordsFromJson(it, "words_$level", level)
+                            }
+                        } else {
+                            // Veritabanında veri var, SharedPreferences'ı güncelle
+                            sharedPref.edit().putBoolean("isLoaded_$level", true).apply()
+                        }
+                    }
             }
         }
-
-        setupButtons()
     }
 
     private fun setupButtons() {
@@ -51,16 +73,7 @@ class AdminActivity : AppCompatActivity() {
         }
     }
 
-    private fun uploadAllWords() {
-        uploadWordsFromJson(R.raw.words_a1, "words_A1")
-        uploadWordsFromJson(R.raw.words_a2, "words_A2")
-        uploadWordsFromJson(R.raw.words_b1, "words_B1")
-        uploadWordsFromJson(R.raw.words_b2, "words_B2")
-        uploadWordsFromJson(R.raw.words_c1, "words_C1")
-        uploadWordsFromJson(R.raw.words_c2, "words_C2")
-    }
-
-    private fun uploadWordsFromJson(resourceId: Int, collectionName: String) {
+    private fun uploadWordsFromJson(resourceId: Int, collectionName: String, level: String) {
         try {
             val jsonString = resources.openRawResource(resourceId).bufferedReader().use { it.readText() }
             val jsonArray = JSONArray(jsonString)
@@ -95,6 +108,8 @@ class AdminActivity : AppCompatActivity() {
                 batch.commit()
                     .addOnSuccessListener {
                         Log.d("Firestore", "Batch upload successful for $collectionName")
+                        getSharedPreferences("AppPrefs", Context.MODE_PRIVATE)
+                            .edit().putBoolean("isLoaded_$level", true).apply()
                     }
             }
         } catch (e: Exception) {
