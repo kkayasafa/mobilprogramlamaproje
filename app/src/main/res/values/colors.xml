@@ -1,5 +1,21 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="black">#FF000000</color>
-    <color name="white">#FFFFFFFF</color>
+    <!-- 60% - Main Background / Neutrals -->
+    <color name="bg_main">#F8FAFC</color>
+    <color name="bg_card">#FFFFFF</color>
+    <color name="text_primary">#1E293B</color>
+
+    <!-- 30% - Secondary / Supportive -->
+    <color name="slate_dark">#334155</color>
+    <color name="slate_light">#94A3B8</color>
+    <color name="divider">#E2E8F0</color>
+
+    <!-- 10% - Accent / Action -->
+    <color name="accent_indigo">#6366F1</color>
+    <color name="accent_light">#EEF2FF</color>
+    <color name="error_red">#EF4444</color>
+
+    <!-- Standard Colors -->
+    <color name="black">#000000</color>
+    <color name="white">#FFFFFF</color>
 </resources>

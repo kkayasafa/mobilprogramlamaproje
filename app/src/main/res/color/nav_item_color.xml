@@ -1,5 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <selector xmlns:android="http://schemas.android.com/apk/res/android">
-    <item android:color="#6C5CE7" android:state_checked="true" />
-    <item android:color="#B2BEC3" />
+    <!-- Secili (Active) İkon ve Metin Rengi: Accent Indigo -->
+    <item android:color="#6366F1" android:state_checked="true" />
+    <!-- Secili Olmayan (Inactive) İkon ve Metin Rengi: Slate Light -->
+    <item android:color="#94A3B8" />
 </selector>

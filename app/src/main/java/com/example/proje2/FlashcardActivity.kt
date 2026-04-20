@@ -3,7 +3,6 @@ package com.example.proje2
 import android.animation.Animator
 import android.animation.AnimatorListenerAdapter
 import android.animation.ObjectAnimator
-import android.content.Context
 import android.graphics.Typeface
 import android.os.Bundle
 import android.text.Spannable
@@ -16,6 +15,8 @@ import android.view.animation.DecelerateInterpolator
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import com.example.proje2.databinding.ActivityFlashcardBinding
+import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.firestore.FieldValue
 import com.google.firebase.firestore.FirebaseFirestore
 import kotlin.math.abs
 
@@ -23,6 +24,7 @@ class FlashcardActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityFlashcardBinding
     private val db = FirebaseFirestore.getInstance()
+    private val auth = FirebaseAuth.getInstance()
     private var wordList = mutableListOf<Word>()
     private var currentIndex = 0
     private var isFrontVisible = true
@@ -30,7 +32,7 @@ class FlashcardActivity : AppCompatActivity() {
 
     private var dX = 0f
     private var initialX = 0f
-    private var isGestureStarted = false // Gesture güvenliği için
+    private var isGestureStarted = false 
     private var level = "A1"
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -41,7 +43,6 @@ class FlashcardActivity : AppCompatActivity() {
         level = intent.getStringExtra("LEVEL") ?: "A1"
         binding.tvLevelTitle.text = "$level SEVİYESİ"
 
-        // 3D derinlik efekti
         val scale = resources.displayMetrics.density * 8000
         binding.flashcard.cameraDistance = scale
 
@@ -72,16 +73,14 @@ class FlashcardActivity : AppCompatActivity() {
                     isGestureStarted = false
                     
                     val deltaX = event.rawX - initialX
-                    val swipeThreshold = view.width * 0.40f // %40 hassasiyet
+                    val swipeThreshold = view.width * 0.40f
 
                     if (abs(deltaX) > swipeThreshold) {
                         swipeCardAway(deltaX > 0)
                     } else {
-                        // Vazgeçme veya Tıklama
                         if (abs(deltaX) < 20) {
-                            flipCard() // Tıklama algılandı
+                            flipCard()
                         } else {
-                            // Merkeze geri dön (Vazgeçti)
                             view.animate()
                                 .translationX(0f)
                                 .rotation(0f)
@@ -153,11 +152,8 @@ class FlashcardActivity : AppCompatActivity() {
     private fun showNextWord() {
         currentIndex++
         if (currentIndex < wordList.size) {
-            // UI Güncelle
             updateCardUI()
-            
-            // Kartı FABRİKA ayarlarına döndür
-            binding.flashcard.animate().cancel() // Önceki animasyonları durdur
+            binding.flashcard.animate().cancel()
             binding.flashcard.apply {
                 translationX = 0f
                 rotation = 0f
@@ -165,13 +161,11 @@ class FlashcardActivity : AppCompatActivity() {
                 alpha = 1f
                 visibility = View.VISIBLE
             }
-            
-            // Görünürlükleri kesinleştir
             binding.layoutFront.visibility = View.VISIBLE
             binding.layoutBack.visibility = View.GONE
             isFrontVisible = true
             isAnimating = false
-            initialX = 0f // Koordinatı sıfırla
+            initialX = 0f
         } else {
             Toast.makeText(this, "Tüm kelimeler bitti!", Toast.LENGTH_LONG).show()
             finish()
@@ -179,35 +173,41 @@ class FlashcardActivity : AppCompatActivity() {
     }
 
     private fun markAsLearned() {
+        val currentUser = auth.currentUser ?: return
         if (currentIndex < wordList.size) {
             val word = wordList[currentIndex]
-            val sharedPref = getSharedPreferences("AppPrefs", Context.MODE_PRIVATE)
-            val learnedSet = sharedPref.getStringSet("ogrenilenler", mutableSetOf())?.toMutableSet() ?: mutableSetOf()
-            learnedSet.add(word.english)
-            sharedPref.edit().putStringSet("ogrenilenler", learnedSet).apply()
+            // Firestore'daki kullanici dokumanina ogrenilen kelimeyi ekle
+            db.collection("users").document(currentUser.uid)
+                .update("learnedWords", FieldValue.arrayUnion(word.english))
         }
     }
 
     private fun fetchWords() {
-        val sharedPref = getSharedPreferences("AppPrefs", Context.MODE_PRIVATE)
-        val learnedSet = sharedPref.getStringSet("ogrenilenler", setOf()) ?: setOf()
-
-        db.collection("words_$level").get()
-            .addOnSuccessListener { documents ->
-                wordList.clear()
-                for (document in documents) {
-                    val word = document.toObject(Word::class.java).apply { id = document.id }
-                    if (!learnedSet.contains(word.english)) {
-                        wordList.add(word)
+        val currentUser = auth.currentUser ?: return
+        
+        // Once kullanicinin ogrendigi kelimeleri cek
+        db.collection("users").document(currentUser.uid).get()
+            .addOnSuccessListener { userDoc ->
+                val learnedWords = userDoc.get("learnedWords") as? List<String> ?: listOf()
+                
+                // Sonra ilgili seviyedeki kelimeleri cek
+                db.collection("words_$level").get()
+                    .addOnSuccessListener { documents ->
+                        wordList.clear()
+                        for (document in documents) {
+                            val word = document.toObject(Word::class.java).apply { id = document.id }
+                            if (!learnedWords.contains(word.english)) {
+                                wordList.add(word)
+                            }
+                        }
+                        wordList.shuffle()
+                        if (wordList.isNotEmpty()) {
+                            updateCardUI()
+                        } else {
+                            Toast.makeText(this, "Bu seviyede yeni kelime kalmadı!", Toast.LENGTH_SHORT).show()
+                            finish()
+                        }
                     }
-                }
-                wordList.shuffle()
-                if (wordList.isNotEmpty()) {
-                    updateCardUI()
-                } else {
-                    Toast.makeText(this, "Yeni kelime yok!", Toast.LENGTH_SHORT).show()
-                    finish()
-                }
             }
     }
 
@@ -216,16 +216,10 @@ class FlashcardActivity : AppCompatActivity() {
         val word = wordList[currentIndex]
         binding.tvEnglishWord.text = word.english
         binding.tvWordTypeEnglish.text = word.englishType
-        
-        // İngilizce Cümlede Kelimeyi Kalın Yap
         binding.tvEnglishSentence.text = getBoldSpannable(word.englishSentence, word.english)
-        
         binding.tvTurkishWord.text = word.turkish
         binding.tvWordTypeTurkish.text = word.turkishType
-        
-        // Türkçe Cümlede Kelimeyi Kalın Yap
         binding.tvTurkishSentence.text = getBoldSpannable(word.turkishSentence, word.turkish)
-
         binding.tvProgress.text = "${currentIndex + 1} / ${wordList.size}"
     }
 

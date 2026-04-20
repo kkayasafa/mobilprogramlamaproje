@@ -1,17 +1,20 @@
 package com.example.proje2
 
-import android.content.Context
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import com.example.proje2.databinding.FragmentStatsBinding
+import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.firestore.FirebaseFirestore
 
 class StatsFragment : Fragment() {
 
     private var _binding: FragmentStatsBinding? = null
     private val binding get() = _binding!!
+    private val auth = FirebaseAuth.getInstance()
+    private val db = FirebaseFirestore.getInstance()
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View {
         _binding = FragmentStatsBinding.inflate(inflater, container, false)
@@ -24,24 +27,24 @@ class StatsFragment : Fragment() {
     }
 
     private fun updateStatistics() {
-        val binding = _binding ?: return
-        val context = context ?: return
-        val sharedPref = context.getSharedPreferences("AppPrefs", Context.MODE_PRIVATE)
-        val learnedSet = sharedPref.getStringSet("ogrenilenler", setOf()) ?: setOf()
+        val currentUser = auth.currentUser ?: return
         
-        val totalLearned = learnedSet.size
-        val maxWords = 150
+        db.collection("users").document(currentUser.uid).get()
+            .addOnSuccessListener { userDoc ->
+                if (isAdded && userDoc.exists()) {
+                    val learnedWords = userDoc.get("learnedWords") as? List<String> ?: listOf()
+                    val learnedSet = learnedWords.toSet()
+                    
+                    val totalLearned = learnedSet.size
+                    val maxWords = 150
 
-        // 1. Genel İlerleme
-        binding.tvTotalCount.text = "$totalLearned / $maxWords"
-        binding.circularProgress.max = maxWords
-        binding.circularProgress.setProgress(totalLearned, true)
+                    binding.tvTotalCount.text = "$totalLearned / $maxWords"
+                    binding.circularProgress.max = maxWords
+                    binding.circularProgress.setProgress(totalLearned, true)
 
-        // 2. Kelime Anatomisi (Sıfat, İsim, Fiil Dağılımı)
-        calculateWordAnatomy(learnedSet)
-
-        // 3. Seviye Bazlı İlerleme
-        setupLevelProgress(totalLearned)
+                    calculateWordAnatomy(learnedSet)
+                }
+            }
     }
 
     private fun calculateWordAnatomy(learnedSet: Set<String>) {
@@ -51,7 +54,6 @@ class StatsFragment : Fragment() {
             return
         }
         
-        val db = com.google.firebase.firestore.FirebaseFirestore.getInstance()
         val levels = listOf("A1", "A2", "B1", "B2", "C1", "C2")
         val wordTypes = mutableMapOf<String, Int>()
         val levelCounts = mutableMapOf<String, Int>()
@@ -71,13 +73,13 @@ class StatsFragment : Fragment() {
                 levelCounts[level] = countForThisLevel
                 
                 processedLevels++
-                if (processedLevels == levels.size) {
+                if (processedLevels == levels.size && isAdded) {
                     updateAnatomyUI(wordTypes)
                     updateLevelProgressUI(levelCounts)
                 }
             }.addOnFailureListener {
                 processedLevels++
-                if (processedLevels == levels.size) {
+                if (processedLevels == levels.size && isAdded) {
                     updateAnatomyUI(wordTypes)
                     updateLevelProgressUI(levelCounts)
                 }
@@ -86,12 +88,10 @@ class StatsFragment : Fragment() {
     }
 
     private fun updateLevelProgressUI(levelCounts: Map<String, Int>) {
-        val binding = _binding ?: return
-        
         val levels = listOf("A1", "A2", "B1", "B2", "C1", "C2")
         levels.forEach { level ->
             val count = levelCounts.getOrDefault(level, 0)
-            val maxPerLevel = 25 // Varsayılan hedef her seviye için 25 kelime
+            val maxPerLevel = 25 
 
             when (level) {
                 "A1" -> {
@@ -129,8 +129,6 @@ class StatsFragment : Fragment() {
     }
 
     private fun updateAnatomyUI(types: Map<String, Int>) {
-        val binding = _binding ?: return
-        
         val nouns = types.getOrDefault("noun", 0)
         val verbs = types.getOrDefault("verb", 0)
         val adjectives = types.getOrDefault("adjective", 0)
@@ -139,10 +137,8 @@ class StatsFragment : Fragment() {
         if (total > 0) {
             binding.progressNoun.max = total
             binding.progressNoun.setProgress(nouns, true)
-            
             binding.progressVerb.max = total
             binding.progressVerb.setProgress(verbs, true)
-            
             binding.progressAdjective.max = total
             binding.progressAdjective.setProgress(adjectives, true)
         } else {
@@ -150,10 +146,6 @@ class StatsFragment : Fragment() {
             binding.progressVerb.setProgress(0, true)
             binding.progressAdjective.setProgress(0, true)
         }
-    }
-
-    private fun setupLevelProgress(total: Int) {
-        // Artık calculateWordAnatomy içinden dinamik olarak güncelleniyor
     }
 
     override fun onDestroyView() {

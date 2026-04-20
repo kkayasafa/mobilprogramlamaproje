@@ -3,17 +3,23 @@ package com.example.proje2
 import android.content.Intent
 import android.os.Bundle
 import android.view.View
+import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.GravityCompat
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.lifecycleScope
+import com.bumptech.glide.Glide
 import com.example.proje2.databinding.ActivityUserBinding
+import com.google.android.material.imageview.ShapeableImageView
 import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.firestore.FirebaseFirestore
 import kotlinx.coroutines.launch
 
 class UserActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityUserBinding
+    private val auth = FirebaseAuth.getInstance()
+    private val db = FirebaseFirestore.getInstance()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -24,6 +30,7 @@ class UserActivity : AppCompatActivity() {
 
         setupBottomNavigation()
         setupDrawer()
+        updateNavHeader()
 
         // İlk açılışta Öğren sayfasını yükle
         if (savedInstanceState == null) {
@@ -49,10 +56,41 @@ class UserActivity : AppCompatActivity() {
         }
     }
 
+    fun updateNavHeader() {
+        val headerView = binding.navigationView.getHeaderView(0)
+        val ivHeaderAvatar = headerView.findViewById<ShapeableImageView>(R.id.ivHeaderAvatar)
+        val tvHeaderName = headerView.findViewById<TextView>(R.id.tvHeaderName)
+        val tvHeaderEmail = headerView.findViewById<TextView>(R.id.tvHeaderEmail)
+
+        val currentUser = auth.currentUser
+        if (currentUser != null) {
+            db.collection("users").document(currentUser.uid).get()
+                .addOnSuccessListener { document ->
+                    if (document != null && document.exists()) {
+                        val fullName = document.getString("fullName") ?: "Kullanıcı"
+                        val email = document.getString("email") ?: currentUser.email
+                        val profileImage = document.getString("profileImage")
+
+                        tvHeaderName.text = fullName
+                        tvHeaderEmail.text = email
+
+                        if (!profileImage.isNullOrEmpty()) {
+                            Glide.with(this)
+                                .load(profileImage)
+                                .placeholder(R.drawable.baseline_person_24)
+                                .into(ivHeaderAvatar)
+                        }
+                    } else {
+                        tvHeaderName.text = currentUser.displayName ?: "Kullanıcı"
+                        tvHeaderEmail.text = currentUser.email
+                    }
+                }
+        }
+    }
+
     private fun logoutUser() {
-        FirebaseAuth.getInstance().signOut()
+        auth.signOut()
         
-        // Modern Credential Manager Sign-Out
         val credentialManager = androidx.credentials.CredentialManager.create(this)
         lifecycleScope.launch {
             try {
@@ -88,7 +126,6 @@ class UserActivity : AppCompatActivity() {
     }
 
     fun loadFragment(fragment: Fragment) {
-        // Profil veya Ayarlar fragment'ı açılırken Bottom Navigation'ı gizle
         if (fragment is ProfileFragment || fragment is SettingsFragment) {
             binding.bottomNavigation.visibility = View.GONE
         } else {
