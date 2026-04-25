@@ -2,6 +2,7 @@ package com.example.proje2
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
+import androidx.core.content.ContextCompat
 import androidx.recyclerview.widget.RecyclerView
 import com.example.proje2.databinding.ItemLearnedWordBinding
 
@@ -21,9 +22,22 @@ class LearnedWordAdapter(private var words: List<Word>) :
 
     override fun onBindViewHolder(holder: WordViewHolder, position: Int) {
         val word = words[position]
-        holder.binding.tvEnglishWord.text = word.english
-        holder.binding.tvTurkishWord.text = word.turkish
-        holder.binding.tvWordType.text = word.englishType
+        val context = holder.itemView.context
+        
+        holder.binding.apply {
+            tvEnglishWord.text = word.english
+            tvTurkishWord.text = word.turkish
+            tvWordType.text = word.englishType
+
+            // Renklendirme mantığı
+            val typeColor = when (word.englishType?.lowercase()) {
+                "noun" -> R.color.type_noun
+                "verb" -> R.color.type_verb
+                "adjective" -> R.color.type_adj
+                else -> R.color.slate_dark
+            }
+            tvWordType.setTextColor(ContextCompat.getColor(context, typeColor))
+        }
     }
 
     override fun getItemCount(): Int = words.size

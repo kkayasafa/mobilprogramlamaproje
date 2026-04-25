@@ -4,40 +4,60 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#F5F7FA"
+    android:background="@color/bg_main"
     android:clipChildren="false"
     android:clipToPadding="false"
     tools:context=".FlashcardActivity">
 
+    <!-- Geri Butonu -->
+    <ImageButton
+        android:id="@+id/btnBack"
+        android:layout_width="48dp"
+        android:layout_height="48dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="24dp"
+        android:background="?attr/selectableItemBackgroundBorderless"
+        android:contentDescription="Geri Dön"
+        android:padding="12dp"
+        android:scaleType="fitCenter"
+        android:src="@drawable/baseline_arrow_back_24"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:tint="@color/text_primary" />
+
     <!-- Üst Bilgi Paneli -->
-    <LinearLayout
+    <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/headerPanel"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="32dp"
-        android:gravity="center"
-        android:orientation="vertical"
+        app:layout_constraintBottom_toBottomOf="@+id/btnBack"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
+        app:layout_constraintTop_toTopOf="@+id/btnBack">
 
         <TextView
             android:id="@+id/tvLevelTitle"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="A1 SEVİYESİ"
-            android:textColor="#6C5CE7"
+            android:textColor="@color/text_primary"
             android:textSize="18sp"
-            android:textStyle="bold" />
+            android:textStyle="bold"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
 
         <TextView
             android:id="@+id/tvProgress"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="0 / 0"
-            android:textColor="#636E72"
-            android:textSize="14sp" />
-    </LinearLayout>
+            android:textColor="@color/slate_light"
+            android:textSize="14sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tvLevelTitle" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
 
     <!-- Ana Flashcard Kaplayıcısı (Animasyonlar için) -->
     <FrameLayout
@@ -57,8 +77,9 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             app:cardCornerRadius="24dp"
-            app:cardElevation="8dp"
-            app:strokeColor="#E0E0E0"
+            app:cardElevation="4dp"
+            app:cardBackgroundColor="@color/bg_card"
+            app:strokeColor="@color/divider"
             app:strokeWidth="1dp">
 
             <androidx.constraintlayout.widget.ConstraintLayout
@@ -76,12 +97,13 @@
                         android:id="@+id/tvWordTypeEnglish"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:background="#E8F0FE"
+                        android:background="@color/accent_light"
                         android:paddingHorizontal="12dp"
                         android:paddingVertical="4dp"
                         android:text="noun"
-                        android:textColor="#1967D2"
+                        android:textColor="@color/accent_indigo"
                         android:textSize="12sp"
+                        android:textStyle="bold"
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toTopOf="parent" />
 
@@ -90,7 +112,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="Apple"
-                        android:textColor="#2D3436"
+                        android:textColor="@color/text_primary"
                         android:textSize="36sp"
                         android:textStyle="bold"
                         app:layout_constraintBottom_toTopOf="@+id/tvEnglishSentence"
@@ -106,7 +128,7 @@
                         android:layout_marginTop="16dp"
                         android:gravity="center"
                         android:text="I eat an apple every day."
-                        android:textColor="#636E72"
+                        android:textColor="@color/slate_light"
                         android:textSize="16sp"
                         android:fontStyle="italic"
                         app:layout_constraintBottom_toBottomOf="parent"
@@ -127,12 +149,13 @@
                         android:id="@+id/tvWordTypeTurkish"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:background="#FFF0F0"
+                        android:background="@color/accent_light"
                         android:paddingHorizontal="12dp"
                         android:paddingVertical="4dp"
                         android:text="isim"
-                        android:textColor="#D93025"
+                        android:textColor="@color/accent_indigo"
                         android:textSize="12sp"
+                        android:textStyle="bold"
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toTopOf="parent" />
 
@@ -141,7 +164,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="Elma"
-                        android:textColor="#6C5CE7"
+                        android:textColor="@color/accent_indigo"
                         android:textSize="36sp"
                         android:textStyle="bold"
                         app:layout_constraintBottom_toTopOf="@+id/tvTurkishSentence"
@@ -157,7 +180,7 @@
                         android:layout_marginTop="16dp"
                         android:gravity="center"
                         android:text="Her gün bir elma yerim."
-                        android:textColor="#636E72"
+                        android:textColor="@color/slate_light"
                         android:textSize="16sp"
                         app:layout_constraintBottom_toBottomOf="parent"
                         app:layout_constraintEnd_toEndOf="parent"
@@ -178,7 +201,7 @@
         android:layout_marginBottom="48dp"
         android:gravity="center"
         android:text="Çevirmek için tıkla\nÖğrendiysen Sağa, Öğrenmediysen Sola kaydır"
-        android:textColor="#B2BEC3"
+        android:textColor="@color/slate_light"
         android:textSize="14sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"

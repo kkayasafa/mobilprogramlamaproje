@@ -7,19 +7,9 @@ import android.util.Log
 import android.widget.ArrayAdapter
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
-import androidx.credentials.CredentialManager
-import androidx.credentials.GetCredentialRequest
-import androidx.credentials.exceptions.GetCredentialCancellationException
-import androidx.credentials.exceptions.GetCredentialException
-import androidx.credentials.exceptions.NoCredentialException
-import androidx.lifecycle.lifecycleScope
 import com.example.proje2.databinding.ActivityRegisterBinding
-import com.google.android.libraries.identity.googleid.GetGoogleIdOption
-import com.google.android.libraries.identity.googleid.GoogleIdTokenCredential
 import com.google.firebase.auth.FirebaseAuth
-import com.google.firebase.auth.GoogleAuthProvider
 import com.google.firebase.firestore.FirebaseFirestore
-import kotlinx.coroutines.launch
 import java.util.*
 
 class RegisterActivity : AppCompatActivity() {
@@ -27,7 +17,6 @@ class RegisterActivity : AppCompatActivity() {
     private lateinit var binding: ActivityRegisterBinding
     private lateinit var auth: FirebaseAuth
     private lateinit var db: FirebaseFirestore
-    private lateinit var credentialManager: CredentialManager
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -36,7 +25,6 @@ class RegisterActivity : AppCompatActivity() {
 
         auth = FirebaseAuth.getInstance()
         db = FirebaseFirestore.getInstance()
-        credentialManager = CredentialManager.create(this)
 
         setupGenderSpinner()
         setupDatePicker()
@@ -53,19 +41,30 @@ class RegisterActivity : AppCompatActivity() {
                 auth.createUserWithEmailAndPassword(email, password)
                     .addOnCompleteListener(this) { task ->
                         if (task.isSuccessful) {
-                            val userId = auth.currentUser?.uid
-                            if (userId != null) {
-                                saveUserToFirestore(userId, fullName, birthDate, gender, email)
-                            }
+                            val user = auth.currentUser
+                            user?.sendEmailVerification()
+                                ?.addOnCompleteListener { verifyTask ->
+                                    if (verifyTask.isSuccessful) {
+                                        val userId = user.uid
+                                        saveUserToFirestore(userId, fullName, birthDate, gender, email)
+                                        
+                                        Toast.makeText(this, "Doğrulama e-postası gönderildi. Lütfen e-postanızı onaylayın.", Toast.LENGTH_LONG).show()
+                                        
+                                        // Kullanıcıyı Firestore'a kaydettikten sonra çıkış yaptırıyoruz ki 
+                                        // doğrulanmamış hesapla login kalmasın
+                                        auth.signOut()
+                                        
+                                        startActivity(Intent(this, LoginActivity::class.java))
+                                        finish()
+                                    } else {
+                                        Toast.makeText(this, "Doğrulama e-postası gönderilemedi: ${verifyTask.exception?.message}", Toast.LENGTH_SHORT).show()
+                                    }
+                                }
                         } else {
                             Toast.makeText(this, "Kayıt başarısız: ${task.exception?.message}", Toast.LENGTH_SHORT).show()
                         }
                     }
             }
-        }
-
-        binding.btnGoogleSignUp.setOnClickListener {
-            signInWithGoogle()
         }
 
         binding.tvLogin.setOnClickListener {
@@ -101,8 +100,9 @@ class RegisterActivity : AppCompatActivity() {
             "birthDate" to birthDate,
             "gender" to gender,
             "email" to email,
-            "profileImage" to "", // İleride eklenebilir
-            "createdAt" to System.currentTimeMillis()
+            "profileImage" to "",
+            "createdAt" to System.currentTimeMillis(),
+            "learnedWords" to arrayListOf<String>()
         )
 
         db.collection("users").document(userId)
@@ -117,62 +117,8 @@ class RegisterActivity : AppCompatActivity() {
             }
     }
 
-    private fun signInWithGoogle() {
-        val serverClientId = "141509616391-855m0iupdif1ipo0fmro6ouefc1mfh93.apps.googleusercontent.com"
-        
-        val googleIdOption: GetGoogleIdOption = GetGoogleIdOption.Builder()
-            .setFilterByAuthorizedAccounts(false)
-            .setServerClientId(serverClientId)
-            .setAutoSelectEnabled(false)
-            .build()
-
-        val request: GetCredentialRequest = GetCredentialRequest.Builder()
-            .addCredentialOption(googleIdOption)
-            .build()
-
-        lifecycleScope.launch {
-            try {
-                val result = credentialManager.getCredential(
-                    context = this@RegisterActivity,
-                    request = request
-                )
-                
-                val credential = result.credential
-                if (credential is GoogleIdTokenCredential) {
-                    firebaseAuthWithGoogle(credential.idToken, credential.displayName)
-                }
-            } catch (e: NoCredentialException) {
-                Toast.makeText(this@RegisterActivity, "Cihazda uygun Google hesabı bulunamadı.", Toast.LENGTH_LONG).show()
-            } catch (e: GetCredentialCancellationException) {
-                Log.w("RegisterActivity", "Giriş iptal edildi")
-            } catch (e: GetCredentialException) {
-                Log.e("RegisterActivity", "Hata: ${e.message}")
-                Toast.makeText(this@RegisterActivity, "Hata: ${e.message}", Toast.LENGTH_SHORT).show()
-            } catch (e: Exception) {
-                Log.e("RegisterActivity", "Beklenmedik Hata", e)
-            }
-        }
-    }
-
-    private fun firebaseAuthWithGoogle(idToken: String, displayName: String?) {
-        val credential = GoogleAuthProvider.getCredential(idToken, null)
-        auth.signInWithCredential(credential)
-            .addOnCompleteListener(this) { task ->
-                if (task.isSuccessful) {
-                    val userId = auth.currentUser?.uid
-                    val email = auth.currentUser?.email
-                    if (userId != null && email != null) {
-                        // Google ile girişte eksik bilgileri (doğum tarihi, cinsiyet) boş bırakıyoruz
-                        saveUserToFirestore(userId, displayName ?: "Google Kullanıcısı", "", "", email)
-                    }
-                } else {
-                    Toast.makeText(this, "Firebase Hatası: ${task.exception?.message}", Toast.LENGTH_SHORT).show()
-                }
-            }
-    }
-
     private fun navigateToMain() {
-        val intent = Intent(this, MainActivity::class.java)
+        val intent = Intent(this, UserActivity::class.java)
         intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
         startActivity(intent)
         finish()
@@ -192,7 +138,7 @@ class RegisterActivity : AppCompatActivity() {
             return false
         }
         if (email.isEmpty()) {
-            binding.etEmail.error = "Email gerekli"
+            binding.etEmail.error = "E-posta gerekli"
             return false
         }
         if (password.isEmpty()) {

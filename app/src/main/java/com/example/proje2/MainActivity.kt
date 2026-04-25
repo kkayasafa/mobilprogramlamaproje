@@ -1,10 +1,12 @@
 package com.example.proje2
 
+import android.content.Context
 import android.content.Intent
 import android.os.Bundle
 import android.util.Log
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
+import androidx.appcompat.app.AppCompatDelegate
 import com.example.proje2.databinding.ActivityMainBinding
 import com.google.android.gms.tasks.Tasks
 import com.google.firebase.FirebaseApp
@@ -17,9 +19,18 @@ class MainActivity : AppCompatActivity() {
     private val db by lazy { FirebaseFirestore.getInstance() }
 
     override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
+        // 0. Tema hafızasını kontrol et ve uygula (setContentView'dan önce!)
+        val sharedPref = getSharedPreferences("Settings", Context.MODE_PRIVATE)
+        val isDarkMode = sharedPref.getBoolean("dark_mode", false)
+        if (isDarkMode) {
+            AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES)
+        } else {
+            AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO)
+        }
 
-        // 1. Firebase'i her şeyden önce başlat
+        super.onCreate(savedInstanceState)
+        
+        // Firebase'i her şeyden önce başlat
         FirebaseApp.initializeApp(this)
 
         binding = ActivityMainBinding.inflate(layoutInflater)

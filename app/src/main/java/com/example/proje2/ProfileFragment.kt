@@ -41,13 +41,14 @@ class ProfileFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
         
         loadUserProfile()
+        setupSettings()
 
         binding.ivAvatar.setOnClickListener {
             pickImageLauncher.launch("image/*")
         }
 
         binding.btnBack.setOnClickListener {
-            (activity as? UserActivity)?.loadFragment(LearnFragment())
+            (activity as? UserActivity)?.navigateBack()
         }
 
         binding.btnLogout.setOnClickListener {
@@ -56,6 +57,61 @@ class ProfileFragment : Fragment() {
             intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
             startActivity(intent)
             requireActivity().finish()
+        }
+    }
+
+    private fun setupSettings() {
+        val sharedPref = requireContext().getSharedPreferences("Settings", Context.MODE_PRIVATE)
+        
+        // Karanlık Mod - SharedPreferences ve Delegate Kullanımı
+        binding.switchDarkMode.isChecked = sharedPref.getBoolean("dark_mode", false)
+        binding.switchDarkMode.setOnCheckedChangeListener { _, isChecked ->
+            sharedPref.edit().putBoolean("dark_mode", isChecked).apply()
+            
+            // Temayı anında uygula
+            if (isChecked) {
+                androidx.appcompat.app.AppCompatDelegate.setDefaultNightMode(
+                    androidx.appcompat.app.AppCompatDelegate.MODE_NIGHT_YES
+                )
+            } else {
+                androidx.appcompat.app.AppCompatDelegate.setDefaultNightMode(
+                    androidx.appcompat.app.AppCompatDelegate.MODE_NIGHT_NO
+                )
+            }
+        }
+
+        // Veri Temizleme
+        binding.tvClearCache.setOnClickListener {
+            val currentUser = auth.currentUser
+            
+            // 1. Firestore çevrimdışı verilerini temizle
+            db.clearPersistence().addOnCompleteListener {
+                // 2. Uygulama önbelleğini temizle
+                requireContext().cacheDir.deleteRecursively()
+                
+                // 3. Yerel profil resmi kayıtlarını ve dosyasını temizle
+                if (currentUser != null) {
+                    val userPref = requireContext().getSharedPreferences("UserProfile", Context.MODE_PRIVATE)
+                    val localPath = userPref.getString("profile_path_${currentUser.uid}", null)
+                    
+                    // Dosyayı fiziksel olarak sil
+                    localPath?.let { path ->
+                        val file = File(path)
+                        if (file.exists()) file.delete()
+                    }
+                    
+                    // SharedPreferences kaydını sil
+                    userPref.edit().remove("profile_path_${currentUser.uid}").apply()
+                    
+                    // Görseli varsayılana döndür
+                    binding.ivAvatar.setImageResource(R.drawable.baseline_person_24)
+                    
+                    // Nav Header'ı anında güncelle
+                    (activity as? UserActivity)?.updateNavHeader()
+                }
+                
+                Toast.makeText(context, "Yerel veriler ve profil resmi tamamen temizlendi", Toast.LENGTH_SHORT).show()
+            }
         }
     }
 
@@ -92,10 +148,10 @@ class ProfileFragment : Fragment() {
             // Yan menuyu guncelle
             (activity as? UserActivity)?.updateNavHeader()
             
-            Toast.makeText(context, "Profil fotoğrafı güncellendi", Toast.LENGTH_SHORT).show()
+            Toast.makeText(context, getString(R.string.profile_updated), Toast.LENGTH_SHORT).show()
         } catch (e: Exception) {
             Log.e("InternalStorage", "Hata: ${e.message}")
-            Toast.makeText(context, "Görsel kaydedilemedi", Toast.LENGTH_SHORT).show()
+            Toast.makeText(context, getString(R.string.profile_update_failed), Toast.LENGTH_SHORT).show()
         }
     }
 

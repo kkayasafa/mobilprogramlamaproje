@@ -1,3 +1,14 @@
 <resources>
     <string name="app_name">Proje2</string>
+    <string name="back">Geri</string>
+    <string name="notifications_enabled">Hatırlatıcılar açıldı</string>
+    <string name="notifications_disabled">Hatırlatıcılar kapatıldı</string>
+    <string name="cache_cleared">Yerel profil fotoğrafı temizlendi</string>
+    <string name="cache_empty">Temizlenecek veri bulunamadı</string>
+    <string name="profile_updated">Profil fotoğrafı güncellendi</string>
+    <string name="profile_update_failed">Görsel kaydedilemedi</string>
+    <string name="logout">Çıkış Yap</string>
+    <string name="my_statistics">İstatistiklerim</string>
+    <string name="learned_words">Öğrenilen Kelimeler</string>
+    <string name="menu">Menü</string>
 </resources>

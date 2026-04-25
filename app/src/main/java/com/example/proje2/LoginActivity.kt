@@ -2,27 +2,18 @@ package com.example.proje2
 
 import android.content.Intent
 import android.os.Bundle
-import android.util.Log
 import android.widget.Toast
+import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
-import androidx.credentials.CredentialManager
-import androidx.credentials.GetCredentialRequest
-import androidx.credentials.exceptions.GetCredentialCancellationException
-import androidx.credentials.exceptions.GetCredentialException
-import androidx.credentials.exceptions.NoCredentialException
-import androidx.lifecycle.lifecycleScope
 import com.example.proje2.databinding.ActivityLoginBinding
-import com.google.android.libraries.identity.googleid.GetGoogleIdOption
-import com.google.android.libraries.identity.googleid.GoogleIdTokenCredential
+import com.google.android.material.button.MaterialButton
+import com.google.android.material.textfield.TextInputEditText
 import com.google.firebase.auth.FirebaseAuth
-import com.google.firebase.auth.GoogleAuthProvider
-import kotlinx.coroutines.launch
 
 class LoginActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityLoginBinding
     private lateinit var auth: FirebaseAuth
-    private lateinit var credentialManager: CredentialManager
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -30,7 +21,6 @@ class LoginActivity : AppCompatActivity() {
         setContentView(binding.root)
 
         auth = FirebaseAuth.getInstance()
-        credentialManager = CredentialManager.create(this)
 
         if (auth.currentUser != null) {
             navigateToMain()
@@ -44,16 +34,22 @@ class LoginActivity : AppCompatActivity() {
                 auth.signInWithEmailAndPassword(email, password)
                     .addOnCompleteListener(this) { task ->
                         if (task.isSuccessful) {
-                            navigateToMain()
+                            val user = auth.currentUser
+                            if (user != null && user.isEmailVerified) {
+                                navigateToMain()
+                            } else {
+                                auth.signOut()
+                                Toast.makeText(this, "Lütfen giriş yapmadan önce e-postanızı onaylayın.", Toast.LENGTH_LONG).show()
+                            }
                         } else {
-                            Toast.makeText(this, "Giriş başarısız: ${task.exception?.message}", Toast.LENGTH_SHORT).show()
+                            Toast.makeText(this, "Giriş başarısız: Bilgilerinizi kontrol edin", Toast.LENGTH_SHORT).show()
                         }
                     }
             }
         }
 
-        binding.btnGoogleSignIn.setOnClickListener {
-            signInWithGoogle()
+        binding.tvForgotPassword.setOnClickListener {
+            showForgotPasswordDialog()
         }
 
         binding.tvRegister.setOnClickListener {
@@ -61,69 +57,53 @@ class LoginActivity : AppCompatActivity() {
         }
     }
 
-    private fun signInWithGoogle() {
-        val serverClientId = "141509616391-855m0iupdif1ipo0fmro6ouefc1mfh93.apps.googleusercontent.com"
-        
-        val googleIdOption: GetGoogleIdOption = GetGoogleIdOption.Builder()
-            .setFilterByAuthorizedAccounts(false) // Tüm hesapları göster
-            .setServerClientId(serverClientId)
-            .setAutoSelectEnabled(false) // Kullanıcıya seçme şansı ver
-            .build()
+    private fun showForgotPasswordDialog() {
+        val dialogView = layoutInflater.inflate(R.layout.dialog_forgot_password, null)
+        val dialog = AlertDialog.Builder(this)
+            .setView(dialogView)
+            .create()
 
-        val request: GetCredentialRequest = GetCredentialRequest.Builder()
-            .addCredentialOption(googleIdOption)
-            .build()
+        // Arka planı transparan yapalım ki MaterialCardView'ın köşeleri görünsün
+        dialog.window?.setBackgroundDrawableResource(android.R.color.transparent)
 
-        lifecycleScope.launch {
-            try {
-                val result = credentialManager.getCredential(
-                    context = this@LoginActivity,
-                    request = request
-                )
-                
-                val credential = result.credential
-                if (credential is GoogleIdTokenCredential) {
-                    firebaseAuthWithGoogle(credential.idToken)
-                }
-            } catch (e: NoCredentialException) {
-                Log.e("LoginActivity", "Kayıtlı hesap bulunamadı", e)
-                Toast.makeText(this@LoginActivity, "Cihazda uygun Google hesabı bulunamadı.", Toast.LENGTH_LONG).show()
-            } catch (e: GetCredentialCancellationException) {
-                Log.w("LoginActivity", "Giriş iptal edildi")
-            } catch (e: GetCredentialException) {
-                Log.e("LoginActivity", "Google Sign-In Hatası: ${e.message}", e)
-                val errorMessage = if (e.message?.contains("10") == true) {
-                    "Konfigürasyon Hatası (10): Lütfen SHA-1 sertifikasını Firebase Console'da kontrol edin."
-                } else {
-                    "Hata: ${e.message}"
-                }
-                Toast.makeText(this@LoginActivity, errorMessage, Toast.LENGTH_LONG).show()
-            } catch (e: Exception) {
-                Log.e("LoginActivity", "Beklenmedik Hata", e)
+        val etEmail = dialogView.findViewById<TextInputEditText>(R.id.etResetEmail)
+        val btnSend = dialogView.findViewById<MaterialButton>(R.id.btnSend)
+        val btnCancel = dialogView.findViewById<MaterialButton>(R.id.btnCancel)
+
+        btnSend.setOnClickListener {
+            val email = etEmail.text.toString().trim()
+            if (email.isNotEmpty()) {
+                auth.sendPasswordResetEmail(email)
+                    .addOnCompleteListener { task ->
+                        if (task.isSuccessful) {
+                            Toast.makeText(this, "Sıfırlama bağlantısı e-postanıza gönderildi", Toast.LENGTH_LONG).show()
+                            dialog.dismiss()
+                        } else {
+                            Toast.makeText(this, "Hata: ${task.exception?.message}", Toast.LENGTH_SHORT).show()
+                        }
+                    }
+            } else {
+                Toast.makeText(this, "Lütfen bir e-posta adresi girin", Toast.LENGTH_SHORT).show()
             }
         }
-    }
 
-    private fun firebaseAuthWithGoogle(idToken: String) {
-        val credential = GoogleAuthProvider.getCredential(idToken, null)
-        auth.signInWithCredential(credential)
-            .addOnCompleteListener(this) { task ->
-                if (task.isSuccessful) {
-                    navigateToMain()
-                } else {
-                    Toast.makeText(this, "Firebase Hatası: ${task.exception?.message}", Toast.LENGTH_SHORT).show()
-                }
-            }
+        btnCancel.setOnClickListener {
+            dialog.dismiss()
+        }
+
+        dialog.show()
     }
 
     private fun navigateToMain() {
-        startActivity(Intent(this, MainActivity::class.java))
+        // MainActivity ya da UserActivity'ye yönlendir
+        // Önceki kodlarda UserActivity ana ekran olarak kullanılıyordu
+        startActivity(Intent(this, UserActivity::class.java))
         finish()
     }
 
     private fun validateInput(email: String, password: String): Boolean {
         if (email.isEmpty()) {
-            binding.etEmail.error = "Email gerekli"
+            binding.etEmail.error = "E-posta gerekli"
             return false
         }
         if (password.isEmpty()) {

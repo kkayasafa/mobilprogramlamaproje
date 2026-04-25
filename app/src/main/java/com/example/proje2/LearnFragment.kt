@@ -47,6 +47,12 @@ class LearnFragment : Fragment() {
                 startActivity(intent)
             }
         }
+
+        binding.btnMyWords.setOnClickListener {
+            val intent = Intent(requireContext(), FlashcardActivity::class.java)
+            intent.putExtra("LEVEL", "MY_WORDS")
+            startActivity(intent)
+        }
     }
 
     override fun onDestroyView() {

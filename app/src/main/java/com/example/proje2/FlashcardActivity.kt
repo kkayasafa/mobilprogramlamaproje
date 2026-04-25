@@ -14,6 +14,7 @@ import android.view.animation.AccelerateInterpolator
 import android.view.animation.DecelerateInterpolator
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.content.ContextCompat
 import com.example.proje2.databinding.ActivityFlashcardBinding
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.FieldValue
@@ -45,6 +46,10 @@ class FlashcardActivity : AppCompatActivity() {
 
         val scale = resources.displayMetrics.density * 8000
         binding.flashcard.cameraDistance = scale
+
+        binding.btnBack.setOnClickListener {
+            finish()
+        }
 
         setupSwipeAndClickListener()
         fetchWords()
@@ -176,15 +181,63 @@ class FlashcardActivity : AppCompatActivity() {
         val currentUser = auth.currentUser ?: return
         if (currentIndex < wordList.size) {
             val word = wordList[currentIndex]
-            // Firestore'daki kullanici dokumanina ogrenilen kelimeyi ekle
-            db.collection("users").document(currentUser.uid)
-                .update("learnedWords", FieldValue.arrayUnion(word.english))
+            
+            if (level == "MY_WORDS") {
+                // Kelime defterindeki kelimeyi ogrenildi olarak isaretle
+                db.collection("users").document(currentUser.uid).get().addOnSuccessListener { doc ->
+                    val myWords = doc.get("myWords") as? List<Map<String, Any>> ?: return@addOnSuccessListener
+                    val updatedWords = myWords.map { map ->
+                        if (map["english"] == word.english) {
+                            map.toMutableMap().apply { put("isLearned", true) }
+                        } else {
+                            map
+                        }
+                    }
+                    db.collection("users").document(currentUser.uid).update("myWords", updatedWords)
+                }
+            } else {
+                // Normal seviye kelimesini ogrenildi olarak isaretle
+                db.collection("users").document(currentUser.uid)
+                    .update("learnedWords", FieldValue.arrayUnion(word.english))
+            }
         }
     }
 
     private fun fetchWords() {
         val currentUser = auth.currentUser ?: return
         
+        if (level == "MY_WORDS") {
+            binding.tvLevelTitle.text = "KELİME DEFTERİM"
+            db.collection("users").document(currentUser.uid).get()
+                .addOnSuccessListener { userDoc ->
+                    val myWordsList = userDoc.get("myWords") as? List<Map<String, Any>> ?: emptyList()
+                    wordList.clear()
+                    for (map in myWordsList) {
+                        val isLearned = map["isLearned"] as? Boolean ?: false
+                        if (!isLearned) {
+                            val word = Word(
+                                english = map["english"] as? String ?: "",
+                                turkish = map["turkish"] as? String ?: "",
+                                englishType = map["englishType"] as? String ?: "",
+                                turkishType = map["turkishType"] as? String ?: "",
+                                englishSentence = map["englishSentence"] as? String ?: "",
+                                turkishSentence = map["turkishSentence"] as? String ?: "",
+                                level = "MY_WORDS"
+                            )
+                            wordList.add(word)
+                        }
+                    }
+                    wordList.shuffle()
+                    if (wordList.isNotEmpty()) {
+                        updateCardUI()
+                    } else {
+                        Toast.makeText(this, "Kelime defteriniz henüz boş!", Toast.LENGTH_SHORT).show()
+                        finish()
+                    }
+                }
+            return
+        }
+
         // Once kullanicinin ogrendigi kelimeleri cek
         db.collection("users").document(currentUser.uid).get()
             .addOnSuccessListener { userDoc ->
@@ -214,13 +267,30 @@ class FlashcardActivity : AppCompatActivity() {
     private fun updateCardUI() {
         if (currentIndex >= wordList.size) return
         val word = wordList[currentIndex]
+        
         binding.tvEnglishWord.text = word.english
         binding.tvWordTypeEnglish.text = word.englishType
         binding.tvEnglishSentence.text = getBoldSpannable(word.englishSentence, word.english)
+        
         binding.tvTurkishWord.text = word.turkish
         binding.tvWordTypeTurkish.text = word.turkishType
         binding.tvTurkishSentence.text = getBoldSpannable(word.turkishSentence, word.turkish)
+        
         binding.tvProgress.text = "${currentIndex + 1} / ${wordList.size}"
+
+        // Renklendirme mantığı
+        val (typeColor, typeBg) = when (word.englishType?.lowercase()) {
+            "noun" -> Pair(R.color.type_noun, R.color.type_noun_bg)
+            "verb" -> Pair(R.color.type_verb, R.color.type_verb_bg)
+            "adjective" -> Pair(R.color.type_adj, R.color.type_adj_bg)
+            else -> Pair(R.color.accent_indigo, R.color.accent_light)
+        }
+
+        binding.tvWordTypeEnglish.setTextColor(ContextCompat.getColor(this, typeColor))
+        binding.tvWordTypeEnglish.setBackgroundColor(ContextCompat.getColor(this, typeBg))
+        
+        binding.tvWordTypeTurkish.setTextColor(ContextCompat.getColor(this, typeColor))
+        binding.tvWordTypeTurkish.setBackgroundColor(ContextCompat.getColor(this, typeBg))
     }
 
     private fun getBoldSpannable(sentence: String, wordToBold: String): SpannableString {

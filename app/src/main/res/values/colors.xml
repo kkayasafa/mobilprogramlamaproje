@@ -18,4 +18,21 @@
     <!-- Standard Colors -->
     <color name="black">#000000</color>
     <color name="white">#FFFFFF</color>
+    <!-- Bottom Nav Specific -->
+    <color name="nav_icon_active">#1E2831</color>
+    <color name="nav_icon_inactive">#69768A</color>
+
+    <!-- Word Types (Fixed Colors) -->
+    <color name="type_noun">#10B981</color>
+    <color name="type_noun_bg">#ECFDF5</color>
+
+    <color name="type_verb">#F59E0B</color>
+    <color name="type_verb_bg">#FFFBEB</color>
+
+    <color name="type_adj">#3B82F6</color>
+    <color name="type_adj_bg">#EFF6FF</color>
+
+    <!-- Learned States -->
+    <color name="learned_bg">#E2F3E9</color>
+    <color name="learned_bg_dark">#1A2E24</color>
 </resources>

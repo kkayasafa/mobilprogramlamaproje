@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- 60% - Main Background (Gece için Siyah/Koyu Gri) -->
+    <color name="bg_main">#0F172A</color> <!-- Çok koyu lacivert/siyah -->
+    <color name="bg_card">#1E293B</color> <!-- Bir tık daha açık kart rengi -->
+    <color name="text_primary">#F1F5F9</color> <!-- Açık gri/Beyaz yazı -->
+
+    <!-- 30% - Secondary -->
+    <color name="slate_dark">#94A3B8</color> <!-- Gündüzün tersine daha açık slate -->
+    <color name="slate_light">#64748B</color>
+    <color name="divider">#334155</color>
+
+    <!-- 10% - Accent (Indigo Geceye de Uygun) -->
+    <color name="accent_indigo">#818CF8</color> <!-- Biraz daha parlak indigo -->
+    <color name="accent_light">#1E1B4B</color> <!-- Çok koyu indigo arka plan -->
+    <color name="error_red">#F87171</color>
+    <!-- Learned States (Karanlık Mod için daha koyu/doygun yeşil) -->
+    <color name="learned_bg">#1C4D37</color>
+    <!-- Bottom Nav Specific (Karanlık Mod) -->
+    <color name="nav_icon_active">#818CF8</color> <!-- Parlak Indigo -->
+    <color name="nav_icon_inactive">#94A3B8</color> <!-- Daha açık Slate -->
+</resources>

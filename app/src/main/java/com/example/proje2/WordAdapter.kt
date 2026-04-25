@@ -1,7 +1,9 @@
 package com.example.proje2
 
+import android.graphics.Color
 import android.view.LayoutInflater
 import android.view.ViewGroup
+import androidx.core.content.ContextCompat
 import androidx.recyclerview.widget.RecyclerView
 import com.example.proje2.databinding.ItemWordBinding
 
@@ -20,6 +22,7 @@ class WordAdapter(
 
     override fun onBindViewHolder(holder: WordViewHolder, position: Int) {
         val word = words[position]
+        val context = holder.itemView.context
         holder.binding.apply {
             tvEnglish.text = word.english
             tvEnglishType.text = "(${word.englishType})"
@@ -30,6 +33,17 @@ class WordAdapter(
             tvTurkishSentence.text = word.turkishSentence
             
             tvLevel.text = word.level
+
+            // Renklendirme mantığı
+            val (typeColor, typeBg) = when (word.englishType?.lowercase()) {
+                "noun" -> Pair(R.color.type_noun, R.color.type_noun_bg)
+                "verb" -> Pair(R.color.type_verb, R.color.type_verb_bg)
+                "adjective" -> Pair(R.color.type_adj, R.color.type_adj_bg)
+                else -> Pair(R.color.slate_dark, R.color.slate_light)
+            }
+
+            tvEnglishType.setTextColor(ContextCompat.getColor(context, typeColor))
+            tvTurkishType.setTextColor(ContextCompat.getColor(context, typeColor))
 
             btnEdit.setOnClickListener { onEditClick(word) }
             btnDelete.setOnClickListener { onDeleteClick(word) }

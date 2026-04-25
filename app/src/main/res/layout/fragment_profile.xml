@@ -3,7 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#F5F7FA"
+    android:background="@color/bg_main"
     android:fillViewport="true">
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -20,7 +20,7 @@
             android:src="@drawable/baseline_arrow_back_24"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:tint="#2C3E50" />
+            app:tint="@color/text_primary" />
 
         <TextView
             android:id="@+id/tvProfileTitle"
@@ -28,7 +28,7 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="8dp"
             android:text="Profilim"
-            android:textColor="#2C3E50"
+            android:textColor="@color/text_primary"
             android:textSize="24sp"
             android:textStyle="bold"
             app:layout_constraintBottom_toBottomOf="@id/btnBack"
@@ -47,7 +47,7 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/tvProfileTitle"
             app:shapeAppearanceOverlay="@style/CircleImage"
-            app:strokeColor="#3498DB"
+            app:strokeColor="@color/accent_indigo"
             app:strokeWidth="3dp" />
 
         <TextView
@@ -56,7 +56,7 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="16dp"
             android:text="Yükleniyor..."
-            android:textColor="#2C3E50"
+            android:textColor="@color/text_primary"
             android:textSize="22sp"
             android:textStyle="bold"
             app:layout_constraintEnd_toEndOf="parent"
@@ -69,7 +69,8 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="32dp"
             app:cardCornerRadius="16dp"
-            app:cardElevation="4dp"
+            app:cardElevation="2dp"
+            app:cardBackgroundColor="@color/bg_card"
             app:layout_constraintTop_toBottomOf="@id/tvUserName">
 
             <LinearLayout
@@ -82,7 +83,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="Kişisel Bilgiler"
-                    android:textColor="#34495E"
+                    android:textColor="@color/accent_indigo"
                     android:textSize="18sp"
                     android:textStyle="bold"
                     android:layout_marginBottom="16dp"/>
@@ -96,20 +97,20 @@
                         android:layout_width="100dp"
                         android:layout_height="wrap_content"
                         android:text="Email:"
-                        android:textColor="#7F8C8D" />
+                        android:textColor="@color/slate_light" />
                     <TextView
                         android:id="@+id/tvEmail"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:text="-"
-                        android:textColor="#2C3E50"
+                        android:textColor="@color/text_primary"
                         android:textStyle="bold" />
                 </LinearLayout>
 
                 <View
                     android:layout_width="match_parent"
                     android:layout_height="1dp"
-                    android:background="#ECF0F1"
+                    android:background="@color/divider"
                     android:layout_marginBottom="12dp"/>
 
                 <LinearLayout
@@ -121,20 +122,20 @@
                         android:layout_width="100dp"
                         android:layout_height="wrap_content"
                         android:text="Doğum Tarihi:"
-                        android:textColor="#7F8C8D" />
+                        android:textColor="@color/slate_light" />
                     <TextView
                         android:id="@+id/tvBirthDate"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:text="-"
-                        android:textColor="#2C3E50"
+                        android:textColor="@color/text_primary"
                         android:textStyle="bold" />
                 </LinearLayout>
 
                 <View
                     android:layout_width="match_parent"
                     android:layout_height="1dp"
-                    android:background="#ECF0F1"
+                    android:background="@color/divider"
                     android:layout_marginBottom="12dp"/>
 
                 <LinearLayout
@@ -145,15 +146,73 @@
                         android:layout_width="100dp"
                         android:layout_height="wrap_content"
                         android:text="Cinsiyet:"
-                        android:textColor="#7F8C8D" />
+                        android:textColor="@color/slate_light" />
                     <TextView
                         android:id="@+id/tvGender"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:text="-"
-                        android:textColor="#2C3E50"
+                        android:textColor="@color/text_primary"
                         android:textStyle="bold" />
                 </LinearLayout>
+
+            </LinearLayout>
+        </com.google.android.material.card.MaterialCardView>
+
+        <com.google.android.material.card.MaterialCardView
+            android:id="@+id/cardSettings"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            app:cardCornerRadius="16dp"
+            app:cardElevation="2dp"
+            app:cardBackgroundColor="@color/bg_card"
+            app:layout_constraintTop_toBottomOf="@id/cardDetails">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:padding="20dp">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Ayarlar"
+                    android:textColor="@color/accent_indigo"
+                    android:textSize="18sp"
+                    android:textStyle="bold"
+                    android:layout_marginBottom="16dp"/>
+
+                <!-- Karanlık Mod -->
+                <com.google.android.material.switchmaterial.SwitchMaterial
+                    android:id="@+id/switchDarkMode"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Karanlık Tema"
+                    android:textColor="@color/text_primary"
+                    android:textSize="16sp"
+                    app:thumbTint="@color/accent_indigo"
+                    app:trackTint="@color/slate_light" />
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:layout_marginVertical="12dp"
+                    android:background="@color/divider" />
+
+                <!-- Veri Temizleme -->
+                <TextView
+                    android:id="@+id/tvClearCache"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:paddingVertical="8dp"
+                    android:text="Yerel Verileri Temizle"
+                    android:textColor="@color/error_red"
+                    android:textSize="16sp"
+                    android:clickable="true"
+                    android:focusable="true"
+                    android:foreground="?attr/selectableItemBackground" />
 
             </LinearLayout>
         </com.google.android.material.card.MaterialCardView>
@@ -165,10 +224,10 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="24dp"
             android:text="Çıkış Yap"
-            android:textColor="#E74C3C"
+            android:textColor="@color/error_red"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/cardDetails" />
+            app:layout_constraintTop_toBottomOf="@id/cardSettings" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </ScrollView>

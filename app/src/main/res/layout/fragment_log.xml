@@ -4,19 +4,47 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#F5F7FA"
+    android:background="@color/bg_main"
     android:paddingBottom="100dp">
+
+    <!-- Menü Butonu -->
+    <ImageButton
+        android:id="@+id/btnMenu"
+        android:layout_width="48dp"
+        android:layout_height="48dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="16dp"
+        android:background="?attr/selectableItemBackgroundBorderless"
+        android:src="@drawable/baseline_menu_24"
+        android:contentDescription="@string/menu"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:tint="@color/slate_dark" />
+
+    <TextView
+        android:id="@+id/tvLogTitle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="24dp"
+        android:layout_marginTop="24dp"
+        android:text="@string/learned_words"
+        android:textColor="@color/text_primary"
+        android:textSize="26sp"
+        android:textStyle="bold"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
     <com.google.android.material.tabs.TabLayout
         android:id="@+id/tabLayout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="#FFFFFF"
-        app:layout_constraintTop_toTopOf="parent"
-        app:tabIndicatorColor="#6C5CE7"
+        android:layout_marginTop="16dp"
+        android:background="@color/bg_main"
+        app:layout_constraintTop_toBottomOf="@id/tvLogTitle"
+        app:tabIndicatorColor="@color/accent_indigo"
         app:tabMode="fixed"
-        app:tabSelectedTextColor="#6C5CE7"
-        app:tabTextColor="#636E72">
+        app:tabSelectedTextColor="@color/accent_indigo"
+        app:tabTextColor="@color/slate_light">
 
         <com.google.android.material.tabs.TabItem
             android:layout_width="wrap_content"
@@ -74,7 +102,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Henüz bu seviyede kelime öğrenmedin."
-        android:textColor="#636E72"
+        android:textColor="@color/slate_light"
         android:visibility="gone"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"

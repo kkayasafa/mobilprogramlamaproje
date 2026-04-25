@@ -4,19 +4,10 @@
         <item
             android:id="@+id/nav_profile"
             android:icon="@drawable/baseline_person_24"
-            android:title="Profil" />
+            android:title="Profil ve Ayarlar" />
         <item
-            android:id="@+id/nav_settings"
+            android:id="@+id/nav_my_words"
             android:icon="@drawable/outline_edit_square_24"
-            android:title="Ayarlar" />
+            android:title="Kelime Defterim" />
     </group>
-
-    <item android:title="Hesap">
-        <menu>
-            <item
-                android:id="@+id/nav_logout"
-                android:icon="@drawable/outline_edit_square_24"
-                android:title="Çıkış Yap" />
-        </menu>
-    </item>
 </menu>

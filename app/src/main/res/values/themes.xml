@@ -23,4 +23,9 @@
     <style name="CircleImage" parent="">
         <item name="cornerSize">50%</item>
     </style>
+
+    <!-- Bottom Nav Göstergesini Gizlemek İçin Tema Katmanı -->
+    <style name="BottomNavOverlay">
+        <item name="colorContainer">@android:color/transparent</item>
+    </style>
 </resources>
