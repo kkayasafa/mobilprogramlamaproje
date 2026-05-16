@@ -5,44 +5,44 @@
     "englishSentence": "The region is known for its abundant natural resources.",
     "level": "C1",
     "turkish": "bol",
-    "turkishType": "sifat",
-    "turkishSentence": "Bolgenin dogal kaynaklari bolca bulunur."
+    "turkishType": "sıfat",
+    "turkishSentence": "Bölgenin doğal kaynakları bolca bulunur."
   },
   {
     "english": "bias",
     "englishType": "noun",
     "englishSentence": "The news report showed a clear political bias.",
     "level": "C1",
-    "turkish": "onyargi, taraf tutma",
+    "turkish": "önyargı, taraf tutma",
     "turkishType": "isim",
-    "turkishSentence": "Haber raporu acik bir siyasi onyargi gosterdi."
+    "turkishSentence": "Haber raporu açık bir siyasi önyargı gösterdi."
   },
   {
     "english": "coherent",
     "englishType": "adjective",
     "englishSentence": "He was able to give a coherent explanation of the theory.",
     "level": "C1",
-    "turkish": "tutarli, anlasilir",
-    "turkishType": "sifat",
-    "turkishSentence": "Teoriyi tutarli bir sekilde aciklayabildi."
+    "turkish": "tutarlı, anlaşılır",
+    "turkishType": "sıfat",
+    "turkishSentence": "Teoriyi tutarlı bir şekilde açıklayabildi."
   },
   {
     "english": "derive",
     "englishType": "verb",
     "englishSentence": "Many English words are derived from Latin.",
     "level": "C1",
-    "turkish": "turemek, elde etmek",
+    "turkish": "türemek, elde etmek",
     "turkishType": "fiil",
-    "turkishSentence": "Bir cok Ingilizce kelime Latinceden turemistir."
+    "turkishSentence": "Bir çok İngilizce kelime Latinceden türemiştir."
   },
   {
     "english": "eloquent",
     "englishType": "adjective",
     "englishSentence": "She gave an eloquent speech at the ceremony.",
     "level": "C1",
-    "turkish": "etkili konusan",
-    "turkishType": "sifat",
-    "turkishSentence": "Torenlerde etkili bir konusma yapti."
+    "turkish": "etkili konuşan",
+    "turkishType": "sıfat",
+    "turkishSentence": "Törenlerde etkili bir konuşma yaptı."
   },
   {
     "english": "fluctuate",
@@ -51,7 +51,7 @@
     "level": "C1",
     "turkish": "dalgalanmak",
     "turkishType": "fiil",
-    "turkishSentence": "Hisse fiyatlari piyasaya gore dalgalanir."
+    "turkishSentence": "Hisse fiyatları piyasaya göre dalgalanır."
   },
   {
     "english": "grasp",
@@ -60,7 +60,7 @@
     "level": "C1",
     "turkish": "kavramak, anlamak",
     "turkishType": "fiil",
-    "turkishSentence": "Evrenin olcegini kavramak zordur."
+    "turkishSentence": "Evrenin ölçeğini kavramak zordur."
   },
   {
     "english": "hinder",
@@ -69,16 +69,16 @@
     "level": "C1",
     "turkish": "engellemek",
     "turkishType": "fiil",
-    "turkishSentence": "Siddetli yagmur ilerlememizi engelleyebilir."
+    "turkishSentence": "Şiddetli yağmur ilerlememizi engelleyebilir."
   },
   {
     "english": "inevitable",
     "englishType": "adjective",
     "englishSentence": "With the rise of technology, this change was inevitable.",
     "level": "C1",
-    "turkish": "kacinilmaz",
-    "turkishType": "sifat",
-    "turkishSentence": "Teknolojinin yükselisiyle bu degisim kacinilmazdi."
+    "turkish": "kaçınılmaz",
+    "turkishType": "sıfat",
+    "turkishSentence": "Teknolojinin yükselişiyle bu değişim kaçınılmazdı."
   },
   {
     "english": "jeopardize",
@@ -87,16 +87,16 @@
     "level": "C1",
     "turkish": "tehlikeye atmak",
     "turkishType": "fiil",
-    "turkishSentence": "Kucuk bir hata icin kariyerini tehlikeye atmamalisin."
+    "turkishSentence": "Küçük bir hata için kariyerini tehlikeye atmamalısın."
   },
   {
     "english": "lucrative",
     "englishType": "adjective",
     "englishSentence": "He started a very lucrative software business.",
     "level": "C1",
-    "turkish": "karli",
-    "turkishType": "sifat",
-    "turkishSentence": "Cok karli bir yazilim isi kurdu."
+    "turkish": "karlı",
+    "turkishType": "sıfat",
+    "turkishSentence": "Çok karlı bir yazılım işi kurdu."
   },
   {
     "english": "mitigate",
@@ -105,25 +105,25 @@
     "level": "C1",
     "turkish": "hafifletmek, azaltmak",
     "turkishType": "fiil",
-    "turkishSentence": "Iklim degisikliginin etkilerini azaltmak icin harekete gecmeliyiz."
+    "turkishSentence": "İklim değişikliğinin etkilerini azaltmak için harekete geçmeliyiz."
   },
   {
     "english": "notorious",
     "englishType": "adjective",
     "englishSentence": "The city is notorious for its traffic jams.",
     "level": "C1",
-    "turkish": "kotu sohretli",
-    "turkishType": "sifat",
-    "turkishSentence": "Sehir, trafik sikisikligi ile kotu sohretlidir."
+    "turkish": "kötü şöhretli",
+    "turkishType": "sıfat",
+    "turkishSentence": "Şehir, trafik sıkışıklığı ile kötü şöhretlidir."
   },
   {
     "english": "obsolete",
     "englishType": "adjective",
     "englishSentence": "Typewriters have become obsolete.",
     "level": "C1",
-    "turkish": "modasi gecmis, kullanilmayan",
-    "turkishType": "sifat",
-    "turkishSentence": "Daktilolar modasi gecmis hale geldi."
+    "turkish": "modası geçmiş, kullanılmayan",
+    "turkishType": "sıfat",
+    "turkishSentence": "Daktilolar modası geçmiş hale geldi."
   },
   {
     "english": "profound",
@@ -131,8 +131,8 @@
     "englishSentence": "The book had a profound impact on my life.",
     "level": "C1",
     "turkish": "derin, etkili",
-    "turkishType": "sifat",
-    "turkishSentence": "Kitap hayatimda derin bir etki birakti."
+    "turkishType": "sıfat",
+    "turkishSentence": "Kitap hayatımda derin bir etki bıraktı."
   },
   {
     "english": "reluctant",
@@ -140,8 +140,8 @@
     "englishSentence": "She was reluctant to admit she was wrong.",
     "level": "C1",
     "turkish": "isteksiz",
-    "turkishType": "sifat",
-    "turkishSentence": "Yanlis oldugunu kabul etmeye isteksizdi."
+    "turkishType": "sıfat",
+    "turkishSentence": "Yanlış olduğunu kabul etmeye isteksizdi."
   },
   {
     "english": "scrutinize",
@@ -150,7 +150,7 @@
     "level": "C1",
     "turkish": "dikkatle incelemek",
     "turkishType": "fiil",
-    "turkishSentence": "Denetciler sirketin hesaplarini dikkatle inceleyecek."
+    "turkishSentence": "Denetçiler şirketin hesaplarını dikkatle inceleyecek."
   },
   {
     "english": "tangible",
@@ -158,35 +158,35 @@
     "englishSentence": "We need tangible evidence to prove this theory.",
     "level": "C1",
     "turkish": "somut, elle tutulur",
-    "turkishType": "sifat",
-    "turkishSentence": "Bu teoriyi kanitlamak icin somut kanita ihtiyacimiz var."
+    "turkishType": "sıfat",
+    "turkishSentence": "Bu teoriyi kanıtlamak için somut kanıta ihtiyacımız var."
   },
   {
     "english": "vulnerable",
     "englishType": "adjective",
     "englishSentence": "Older people are more vulnerable to this disease.",
     "level": "C1",
-    "turkish": "savunmasiz, hassas",
-    "turkishType": "sifat",
-    "turkishSentence": "Yasli insanlar bu hastaliga karsi daha savunmasizdir."
+    "turkish": "savunmasız, hassas",
+    "turkishType": "sıfat",
+    "turkishSentence": "Yaşlı insanlar bu hastalığa karşı daha savunmasızdır."
   },
   {
     "english": "yield",
     "englishType": "verb",
     "englishSentence": "The investigation failed to yield any new information.",
     "level": "C1",
-    "turkish": "urun vermek, saglamak",
+    "turkish": "ürün vermek, sağlamak",
     "turkishType": "fiil",
-    "turkishSentence": "Sorusurma yeni bir bilgi saglayamadi."
+    "turkishSentence": "Soruşturma yeni bir bilgi sağlayamadı."
   },
   {
     "english": "ambiguous",
     "englishType": "adjective",
     "englishSentence": "His reply to my question was somewhat ambiguous.",
     "level": "C1",
-    "turkish": "belirsiz, cok anlamli",
-    "turkishType": "sifat",
-    "turkishSentence": "Soruma verdigi cevap biraz belirsizdi."
+    "turkish": "belirsiz, çok anlamlı",
+    "turkishType": "sıfat",
+    "turkishSentence": "Soruma verdiği cevap biraz belirsizdi."
   },
   {
     "english": "conquer",
@@ -195,33 +195,33 @@
     "level": "C1",
     "turkish": "fethetmek, yenmek",
     "turkishType": "fiil",
-    "turkishSentence": "Korkularini yenmek icin onlarla yuzlesmelisin."
+    "turkishSentence": "Korkularınızı yenmek için onlarla yüzleşmelisiniz."
   },
   {
     "english": "deceive",
     "englishType": "verb",
     "englishSentence": "Do not let his calm appearance deceive you.",
     "level": "C1",
-    "turkish": "kandirmak, aldatmak",
+    "turkish": "kandırmak, aldatmak",
     "turkishType": "fiil",
-    "turkishSentence": "Sakin gorunusu seni kandirmasin."
+    "turkishSentence": "Sakin görünüşü sizi kandırmasın."
   },
   {
     "english": "eccentric",
     "englishType": "adjective",
     "englishSentence": "The artist was known for his eccentric behavior.",
     "level": "C1",
-    "turkish": "tuhaf, alisilagelmisin disinda",
-    "turkishType": "sifat",
-    "turkishSentence": "Sanatci, alisilagelmisin disindaki davranislariyla biliniyordu."
+    "turkish": "tuhaf, alışılagelmişin dışında",
+    "turkishType": "sıfat",
+    "turkishSentence": "Sanatçı, alışılagelmişin dışındaki davranışlarıyla biliniyordu."
   },
   {
     "english": "perceive",
     "englishType": "verb",
     "englishSentence": "Cats are able to perceive light better than humans.",
     "level": "C1",
-    "turkish": "algilamak",
+    "turkish": "algılamak",
     "turkishType": "fiil",
-    "turkishSentence": "Kediler isigi insanlardan daha iyi algilar."
+    "turkishSentence": "Kediler ışığı insanlardan daha iyi algılar."
   }
 ]

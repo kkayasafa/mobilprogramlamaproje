@@ -12,7 +12,7 @@ import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.FirebaseFirestore
 import java.util.*
 
-class RegisterActivity : AppCompatActivity() {
+class RegisterActivity : BaseActivity() {
 
     private lateinit var binding: ActivityRegisterBinding
     private lateinit var auth: FirebaseAuth
@@ -54,8 +54,7 @@ class RegisterActivity : AppCompatActivity() {
                                         // doğrulanmamış hesapla login kalmasın
                                         auth.signOut()
                                         
-                                        startActivity(Intent(this, LoginActivity::class.java))
-                                        finish()
+                                        startActivityWithLoading(Intent(this, LoginActivity::class.java), true)
                                     } else {
                                         Toast.makeText(this, "Doğrulama e-postası gönderilemedi: ${verifyTask.exception?.message}", Toast.LENGTH_SHORT).show()
                                     }
@@ -120,8 +119,7 @@ class RegisterActivity : AppCompatActivity() {
     private fun navigateToMain() {
         val intent = Intent(this, UserActivity::class.java)
         intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
-        startActivity(intent)
-        finish()
+        startActivityWithLoading(intent, true)
     }
 
     private fun validateInput(fullName: String, birthDate: String, gender: String, email: String, password: String, confirmPassword: String): Boolean {

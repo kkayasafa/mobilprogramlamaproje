@@ -2,6 +2,8 @@ package com.example.proje2
 
 import android.content.Intent
 import android.os.Bundle
+import android.os.Handler
+import android.os.Looper
 import android.view.View
 import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
@@ -16,7 +18,7 @@ import com.google.firebase.firestore.FirebaseFirestore
 import kotlinx.coroutines.launch
 import java.io.File
 
-class UserActivity : AppCompatActivity() {
+class UserActivity : BaseActivity() {
 
     private lateinit var binding: ActivityUserBinding
     private val auth = FirebaseAuth.getInstance()
@@ -70,17 +72,36 @@ class UserActivity : AppCompatActivity() {
                 R.id.nav_my_words -> {
                     loadFragment(MyWordsFragment())
                 }
+                R.id.nav_logout -> {
+                    showLogoutConfirmation()
+                }
             }
             binding.drawerLayout.closeDrawer(GravityCompat.END)
             true
         }
+    }
 
-        // Sabitlenmiş Çıkış Butonu
-        val btnLogoutMenu = binding.navigationView.findViewById<View>(R.id.btnLogoutMenu)
-        btnLogoutMenu?.setOnClickListener {
-            binding.drawerLayout.closeDrawer(GravityCompat.END)
+    fun showLogoutConfirmation() {
+        val dialog = android.app.Dialog(this)
+        dialog.setContentView(R.layout.dialog_confirm)
+        dialog.window?.setBackgroundDrawableResource(android.R.color.transparent)
+        
+        // Popup'ın ekran genişliğinin %90'ını kaplamasını sağla
+        dialog.window?.setLayout(
+            (resources.displayMetrics.widthPixels * 0.90).toInt(),
+            android.view.ViewGroup.LayoutParams.WRAP_CONTENT
+        )
+
+        val btnCancel = dialog.findViewById<com.google.android.material.button.MaterialButton>(R.id.btnCancel)
+        val btnConfirm = dialog.findViewById<com.google.android.material.button.MaterialButton>(R.id.btnConfirm)
+
+        btnCancel.setOnClickListener { dialog.dismiss() }
+        btnConfirm.setOnClickListener {
+            dialog.dismiss()
             logoutUser()
         }
+        
+        dialog.show()
     }
 
     fun updateNavHeader() {
@@ -122,7 +143,12 @@ class UserActivity : AppCompatActivity() {
         }
     }
 
+    fun openDrawer() {
+        binding.drawerLayout.openDrawer(GravityCompat.END)
+    }
+
     private fun logoutUser() {
+        showLoading()
         auth.signOut()
         
         val credentialManager = androidx.credentials.CredentialManager.create(this)
@@ -132,10 +158,10 @@ class UserActivity : AppCompatActivity() {
             } catch (e: Exception) {
                 // Hata olsa bile login ekranına dön
             }
+            hideLoading()
             val intent = Intent(this@UserActivity, LoginActivity::class.java)
             intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
-            startActivity(intent)
-            finish()
+            startActivityWithLoading(intent, true)
         }
     }
 
@@ -155,6 +181,10 @@ class UserActivity : AppCompatActivity() {
                 }
                 R.id.nav_log -> {
                     loadFragment(LogFragment())
+                    true
+                }
+                R.id.nav_leaderboard -> {
+                    loadFragment(LeaderboardFragment())
                     true
                 }
                 else -> false

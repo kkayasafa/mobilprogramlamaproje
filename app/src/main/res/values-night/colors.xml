@@ -14,9 +14,11 @@
     <color name="accent_indigo">#818CF8</color> <!-- Biraz daha parlak indigo -->
     <color name="accent_light">#1E1B4B</color> <!-- Çok koyu indigo arka plan -->
     <color name="error_red">#F87171</color>
+    <color name="tab_selected_color">#FFFFFF</color>
     <!-- Learned States (Karanlık Mod için daha koyu/doygun yeşil) -->
     <color name="learned_bg">#1C4D37</color>
     <!-- Bottom Nav Specific (Karanlık Mod) -->
-    <color name="nav_icon_active">#818CF8</color> <!-- Parlak Indigo -->
-    <color name="nav_icon_inactive">#94A3B8</color> <!-- Daha açık Slate -->
+    <color name="nav_bg">#383D59</color> <!-- Arka plandan (bg_main) daha açık bir ton -->
+    <color name="nav_icon_active">#B2B7F4</color> <!-- Parlak Indigo -->
+    <color name="nav_icon_inactive">#EAEDEF</color> <!-- Slate -->
 </resources>

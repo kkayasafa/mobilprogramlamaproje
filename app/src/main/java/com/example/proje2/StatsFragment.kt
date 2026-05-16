@@ -50,8 +50,26 @@ class StatsFragment : Fragment() {
                     binding.circularProgress.setProgress(totalLearned, true)
 
                     calculateWordAnatomy(learnedSet)
+                    updateMyWordsStatistics(userDoc)
                 }
             }
+    }
+
+    private fun updateMyWordsStatistics(userDoc: com.google.firebase.firestore.DocumentSnapshot) {
+        val myWordsList = userDoc.get("myWords") as? List<Map<String, Any>> ?: emptyList()
+        val totalMyWords = myWordsList.size
+        val learnedMyWords = myWordsList.count { (it["isLearned"] as? Boolean) == true }
+        val remainingMyWords = totalMyWords - learnedMyWords
+
+        binding.tvMyWordsCount.text = "$learnedMyWords / $totalMyWords"
+
+        if (totalMyWords > 0) {
+            binding.myWordsProgress.max = totalMyWords
+            binding.myWordsProgress.setProgress(learnedMyWords, true)
+        } else {
+            binding.myWordsProgress.max = 100
+            binding.myWordsProgress.setProgress(0, true)
+        }
     }
 
     private fun calculateWordAnatomy(learnedSet: Set<String>) {

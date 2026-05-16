@@ -4,9 +4,9 @@
     "englishType": "verb",
     "englishSentence": "She worked hard to achieve her goals.",
     "level": "B1",
-    "turkish": "basarmak",
+    "turkish": "başarmak",
     "turkishType": "fiil",
-    "turkishSentence": "Hedeflerine ulasmak icin cok calisti."
+    "turkishSentence": "Hedeflerine ulaşmak için çok çalıştı."
   },
   {
     "english": "benefit",
@@ -15,7 +15,7 @@
     "level": "B1",
     "turkish": "fayda",
     "turkishType": "isim",
-    "turkishSentence": "Sebze yemek bircok saglik faydasi saglar."
+    "turkishSentence": "Sebze yemek birçok sağlık faydası sağlar."
   },
   {
     "english": "challenge",
@@ -24,7 +24,7 @@
     "level": "B1",
     "turkish": "zorluk, meydan okuma",
     "turkishType": "isim",
-    "turkishSentence": "O dagi tirmak gercek bir zorluktu."
+    "turkishSentence": "O dağı tırmanmak gerçek bir zorluktu."
   },
   {
     "english": "damage",
@@ -33,25 +33,25 @@
     "level": "B1",
     "turkish": "zarar vermek",
     "turkishType": "fiil",
-    "turkishSentence": "Firtina bircok seye zarar verdi."
+    "turkishSentence": "Fırtına birçok şeye zarar verdi."
   },
   {
     "english": "environment",
     "englishType": "noun",
     "englishSentence": "We must protect the environment.",
     "level": "B1",
-    "turkish": "cevre",
+    "turkish": "çevre",
     "turkishType": "isim",
-    "turkishSentence": "Cevreyi korumaliyiz."
+    "turkishSentence": "Çevreyi korumalıyız."
   },
   {
     "english": "familiar",
     "englishType": "adjective",
     "englishSentence": "Your face looks familiar to me.",
     "level": "B1",
-    "turkish": "tanidik",
-    "turkishType": "sifat",
-    "turkishSentence": "Yuzun bana tanidik geliyor."
+    "turkish": "tanıdık",
+    "turkishType": "sıfat",
+    "turkishSentence": "Yüzün bana tanıdık geliyor."
   },
   {
     "english": "gather",
@@ -60,25 +60,25 @@
     "level": "B1",
     "turkish": "toplamak, toplanmak",
     "turkishType": "fiil",
-    "turkishSentence": "Disarida bir kalabalik toplanmaya basladi."
+    "turkishSentence": "Dışarıda bir kalabalık toplanmaya başladı."
   },
   {
     "english": "habit",
     "englishType": "noun",
     "englishSentence": "Reading before bed is a good habit.",
     "level": "B1",
-    "turkish": "aliskanlik",
+    "turkish": "alışkanlık",
     "turkishType": "isim",
-    "turkishSentence": "Yatmadan once okumak iyi bir aliskanliktir."
+    "turkishSentence": "Yatmadan önce okumak iyi bir alışkanlıktır."
   },
   {
     "english": "improve",
     "englishType": "verb",
     "englishSentence": "I want to improve my English speaking skills.",
     "level": "B1",
-    "turkish": "gelistirmek",
+    "turkish": "geliştirmek",
     "turkishType": "fiil",
-    "turkishSentence": "Ingilizce konusma becerilerimi gelistirmek istiyorum."
+    "turkishSentence": "İngilizce konuşma becerilerimi geliştirmek istiyorum."
   },
   {
     "english": "journey",
@@ -87,7 +87,7 @@
     "level": "B1",
     "turkish": "yolculuk",
     "turkishType": "isim",
-    "turkishSentence": "Trenle yolculuk bes saat surdu."
+    "turkishSentence": "Trenle yolculuk beş saat sürdü."
   },
   {
     "english": "lack",
@@ -96,16 +96,16 @@
     "level": "B1",
     "turkish": "eksiklik",
     "turkishType": "isim",
-    "turkishSentence": "Bu bolgede temiz su eksikligi var."
+    "turkishSentence": "Bu bölgede temiz su eksikliği var."
   },
   {
     "english": "manage",
     "englishType": "verb",
     "englishSentence": "Did you manage to fix the car?",
     "level": "B1",
-    "turkish": "basarmak, yonetmek",
+    "turkish": "başarmak, yönetmek",
     "turkishType": "fiil",
-    "turkishSentence": "Arabayi tamir etmeyi basarabildin mi?"
+    "turkishSentence": "Arabayı tamir etmeyi başarabildin mi?"
   },
   {
     "english": "notice",
@@ -114,25 +114,25 @@
     "level": "B1",
     "turkish": "fark etmek",
     "turkishType": "fiil",
-    "turkishSentence": "Yeni sac kesimini fark ettin mi?"
+    "turkishSentence": "Yeni saç kesimini fark ettin mi?"
   },
   {
     "english": "opportunity",
     "englishType": "noun",
     "englishSentence": "This job is a great opportunity for you.",
     "level": "B1",
-    "turkish": "firsat",
+    "turkish": "fırsat",
     "turkishType": "isim",
-    "turkishSentence": "Bu is senin icin harika bir firsat."
+    "turkishSentence": "Bu iş senin için harika bir fırsat."
   },
   {
     "english": "prepare",
     "englishType": "verb",
     "englishSentence": "I need to prepare for my exam tomorrow.",
     "level": "B1",
-    "turkish": "hazirlanmak",
+    "turkish": "hazırlanmak",
     "turkishType": "fiil",
-    "turkishSentence": "Yarin ki sinava hazirlanmam gerekiyor."
+    "turkishSentence": "Yarınki sınava hazırlanmam gerekiyor."
   },
   {
     "english": "quality",
@@ -141,25 +141,25 @@
     "level": "B1",
     "turkish": "kalite",
     "turkishType": "isim",
-    "turkishSentence": "Bu kamera yuksek kaliteli fotograflar uretiyor."
+    "turkishSentence": "Bu kamera yüksek kaliteli fotoğraflar üretiyor."
   },
   {
     "english": "realize",
     "englishType": "verb",
     "englishSentence": "I didn't realize it was so late.",
     "level": "B1",
-    "turkish": "farkina varmak",
+    "turkish": "farkına varmak",
     "turkishType": "fiil",
-    "turkishSentence": "Bu kadar gec oldugunu fark etmedim."
+    "turkishSentence": "Bu kadar geç olduğunu fark etmedim."
   },
   {
     "english": "share",
     "englishType": "verb",
     "englishSentence": "Please share this post with your friends.",
     "level": "B1",
-    "turkish": "paylasmak",
+    "turkish": "paylaşmak",
     "turkishType": "fiil",
-    "turkishSentence": "Lutfen bu gonderiyi arkadaslarinla paylas."
+    "turkishSentence": "Lütfen bu gönderiyi arkadaşlarınla paylaş."
   },
   {
     "english": "traditional",
@@ -167,26 +167,26 @@
     "englishSentence": "We ate traditional Turkish food.",
     "level": "B1",
     "turkish": "geleneksel",
-    "turkishType": "sifat",
-    "turkishSentence": "Geleneksel Turk yemekleri yedik."
+    "turkishType": "sıfat",
+    "turkishSentence": "Geleneksel Türk yemekleri yedik."
   },
   {
     "english": "useful",
     "englishType": "adjective",
     "englishSentence": "This dictionary is very useful for learners.",
     "level": "B1",
-    "turkish": "faydali",
-    "turkishType": "sifat",
-    "turkishSentence": "Bu sozluk ogrenenler icin cok faydalidir."
+    "turkish": "faydalı",
+    "turkishType": "sıfat",
+    "turkishSentence": "Bu sözlük öğrenenler için çok faydalıdır."
   },
   {
     "english": "various",
     "englishType": "adjective",
     "englishSentence": "There are various reasons for this problem.",
     "level": "B1",
-    "turkish": "cesitli",
-    "turkishType": "sifat",
-    "turkishSentence": "Bu problemin cesitli nedenleri var."
+    "turkish": "çeşitli",
+    "turkishType": "sıfat",
+    "turkishSentence": "Bu problemin çeşitli nedenleri var."
   },
   {
     "english": "wonder",
@@ -195,25 +195,25 @@
     "level": "B1",
     "turkish": "merak etmek",
     "turkishType": "fiil",
-    "turkishSentence": "Simdi nerede yasadigini merak ediyorum."
+    "turkishSentence": "Şimdi nerede yaşadığını merak ediyorum."
   },
   {
     "english": "youth",
     "englishType": "noun",
     "englishSentence": "He spent his youth in London.",
     "level": "B1",
-    "turkish": "genclik",
+    "turkish": "gençlik",
     "turkishType": "isim",
-    "turkishSentence": "Gencligini Londra'da gecirdi."
+    "turkishSentence": "Gençliğini Londra'da geçirdi."
   },
   {
     "english": "zone",
     "englishType": "noun",
     "englishSentence": "This is a no-parking zone.",
     "level": "B1",
-    "turkish": "bolge",
+    "turkish": "bölge",
     "turkishType": "isim",
-    "turkishSentence": "Bu park etmek yasak bir bolgedir."
+    "turkishSentence": "Bu park etmek yasak bir bölgedir."
   },
   {
     "english": "average",
@@ -221,7 +221,7 @@
     "englishSentence": "The average age of the students is twenty.",
     "level": "B1",
     "turkish": "ortalama",
-    "turkishType": "sifat",
-    "turkishSentence": "Ogrencilerin ortalama yasi yirmidir."
+    "turkishType": "sıfat",
+    "turkishSentence": "Öğrencilerin ortalama yaşı yirmidir."
   }
 ]

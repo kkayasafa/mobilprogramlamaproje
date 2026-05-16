@@ -18,9 +18,11 @@
     <!-- Standard Colors -->
     <color name="black">#000000</color>
     <color name="white">#FFFFFF</color>
+    <color name="tab_selected_color">#000000</color>
     <!-- Bottom Nav Specific -->
-    <color name="nav_icon_active">#1E2831</color>
-    <color name="nav_icon_inactive">#69768A</color>
+    <color name="nav_bg">#D9D9F6</color> <!-- Daha belirgin açık gri/mavi tonu -->
+    <color name="nav_icon_active">#2E309B</color> <!-- Indigo -->
+    <color name="nav_icon_inactive">#151518</color> <!-- Slate Light -->
 
     <!-- Word Types (Fixed Colors) -->
     <color name="type_noun">#10B981</color>

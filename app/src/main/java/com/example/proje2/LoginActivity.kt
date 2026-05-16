@@ -10,7 +10,7 @@ import com.google.android.material.button.MaterialButton
 import com.google.android.material.textfield.TextInputEditText
 import com.google.firebase.auth.FirebaseAuth
 
-class LoginActivity : AppCompatActivity() {
+class LoginActivity : BaseActivity() {
 
     private lateinit var binding: ActivityLoginBinding
     private lateinit var auth: FirebaseAuth
@@ -97,8 +97,7 @@ class LoginActivity : AppCompatActivity() {
     private fun navigateToMain() {
         // MainActivity ya da UserActivity'ye yönlendir
         // Önceki kodlarda UserActivity ana ekran olarak kullanılıyordu
-        startActivity(Intent(this, UserActivity::class.java))
-        finish()
+        startActivityWithLoading(Intent(this, UserActivity::class.java), true)
     }
 
     private fun validateInput(email: String, password: String): Boolean {

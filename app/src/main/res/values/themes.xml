@@ -20,6 +20,10 @@
 
     <style name="Theme.Proje2" parent="Base.Theme.Proje2" />
 
+    <style name="CircleAppearance">
+        <item name="cornerSize">50%</item>
+    </style>
+
     <style name="CircleImage" parent="">
         <item name="cornerSize">50%</item>
     </style>
@@ -27,5 +31,13 @@
     <!-- Bottom Nav Göstergesini Gizlemek İçin Tema Katmanı -->
     <style name="BottomNavOverlay">
         <item name="colorContainer">@android:color/transparent</item>
+        <item name="itemActiveIndicatorStyle">@style/App.Custom.Indicator</item>
+    </style>
+
+    <style name="App.Custom.Indicator" parent="Widget.Material3.BottomNavigationView.ActiveIndicator">
+        <item name="android:color">@color/accent_light</item>
+        <item name="android:width">48dp</item>
+        <item name="android:height">48dp</item>
+        <item name="marginHorizontal">0dp</item>
     </style>
 </resources>

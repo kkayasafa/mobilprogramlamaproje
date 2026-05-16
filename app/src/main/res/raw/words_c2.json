@@ -6,7 +6,7 @@
     "level": "C2",
     "turkish": "keskin zeka, sezgi",
     "turkishType": "isim",
-    "turkishSentence": "Is konusunda keskin bir zekasi var ve nadiren kotu bir anlasma yapar."
+    "turkishSentence": "İş konusunda keskin bir zekası var ve nadiren kötü bir anlaşma yapar."
   },
   {
     "english": "benevolent",
@@ -14,8 +14,8 @@
     "englishSentence": "The benevolent gentleman donated half of his fortune to charity.",
     "level": "C2",
     "turkish": "iyiliksever",
-    "turkishType": "sifat",
-    "turkishSentence": "Iyiliksever beyefendi servetinin yarisini hayira bagisladi."
+    "turkishType": "sıfat",
+    "turkishSentence": "İyiliksever beyefendi servetinin yarısını hayıra bağışladı."
   },
   {
     "english": "cacophony",
@@ -24,70 +24,70 @@
     "level": "C2",
     "turkish": "kakofoni, uyumsuz sesler",
     "turkishType": "isim",
-    "turkishSentence": "Araba kornalari ve insaat gurultusunden olusan bir kakofoniyle uyandik."
+    "turkishSentence": "Araba kornaları ve inşaat gürültüsünden oluşan bir kakofoniyle uyandık."
   },
   {
     "english": "dichotomy",
     "englishType": "noun",
     "englishSentence": "There is a sharp dichotomy between the public and private sectors.",
     "level": "C2",
-    "turkish": "ikilik, ikiye bolunme",
+    "turkish": "ikilik, ikiye bölünme",
     "turkishType": "isim",
-    "turkishSentence": "Kamu ve ozel sektorler arasinda belirgin bir ikilik var."
+    "turkishSentence": "Kamu ve özel sektörler arasında belirgin bir ikilik var."
   },
   {
     "english": "ephemeral",
     "englishType": "adjective",
     "englishSentence": "Fame in the music industry is often ephemeral.",
     "level": "C2",
-    "turkish": "kisa omurlu, gecici",
-    "turkishType": "sifat",
-    "turkishSentence": "Muzik sektorunde un genellikle kisa omurludur."
+    "turkish": "kısa ömürlü, geçici",
+    "turkishType": "sıfat",
+    "turkishSentence": "Müzik sektöründe ün genellikle kısa ömürlüdür."
   },
   {
     "english": "fastidious",
     "englishType": "adjective",
     "englishSentence": "He is very fastidious about how his desk is organized.",
     "level": "C2",
-    "turkish": "titiz, zor begenir",
-    "turkishType": "sifat",
-    "turkishSentence": "Masasinin duzenlenmesi konusunda cok titizdir."
+    "turkish": "titiz, zor beğenir",
+    "turkishType": "sıfat",
+    "turkishSentence": "Masasının düzenlenmesi konusunda çok titizdir."
   },
   {
     "english": "gregarious",
     "englishType": "adjective",
     "englishSentence": "Lions are highly gregarious animals, living in prides.",
     "level": "C2",
-    "turkish": "sosyal, surucul",
-    "turkishType": "sifat",
-    "turkishSentence": "Aslanlar suruler halinde yasayan son derece sosyal hayvanlardir."
+    "turkish": "sosyal, sürücül",
+    "turkishType": "sıfat",
+    "turkishSentence": "Aslanlar sürüler halinde yaşayan son derece sosyal hayvanlardır."
   },
   {
     "english": "hubris",
     "englishType": "noun",
     "englishSentence": "His tragic flaw was his excessive hubris.",
     "level": "C2",
-    "turkish": "kibir, asiri gurur",
+    "turkish": "kibir, aşırı gurur",
     "turkishType": "isim",
-    "turkishSentence": "Trajik kusuru asiri kibridir."
+    "turkishSentence": "Trajik kusuru aşırı kibridir."
   },
   {
     "english": "iconoclast",
     "englishType": "noun",
     "englishSentence": "The comedian is an iconoclast who attacks established beliefs.",
     "level": "C2",
-    "turkish": "put kirici, geleneklere karsi cikan",
+    "turkish": "put kırıcı, geleneklere karşı çıkan",
     "turkishType": "isim",
-    "turkishSentence": "Komedyen, yerlesik inancalara saldiran bir put kiricidir."
+    "turkishSentence": "Komedyen, yerleşik inançlara saldıran bir put kırıcıdır."
   },
   {
     "english": "juxtapose",
     "englishType": "verb",
     "englishSentence": "The exhibition juxtaposes modern art with classical sculptures.",
     "level": "C2",
-    "turkish": "yan yana koymak, karsilastirmak",
+    "turkish": "yan yana koymak, karşılaştırmak",
     "turkishType": "fiil",
-    "turkishSentence": "Sergi modern sanati klasik heykellerle yan yana koyuyor."
+    "turkishSentence": "Sergi modern sanatı klasik heykellerle yan yana koyuyor."
   },
   {
     "english": "kinetic",
@@ -95,44 +95,44 @@
     "englishSentence": "The novel has a kinetic energy that keeps you turning the pages.",
     "level": "C2",
     "turkish": "hareketli, kinetik",
-    "turkishType": "sifat",
-    "turkishSentence": "Roman, sayfalari cevirmeye devam ettiren bir enerjiye sahiptir."
+    "turkishType": "sıfat",
+    "turkishSentence": "Roman, sayfaları çevirmeye devam ettiren bir enerjiye sahiptir."
   },
   {
     "english": "lethargic",
     "englishType": "adjective",
     "englishSentence": "The hot weather makes me feel completely lethargic.",
     "level": "C2",
-    "turkish": "uyusuk, halsiz",
-    "turkishType": "sifat",
-    "turkishSentence": "Sicak hava beni tamamen halsiz hissettiriyor."
+    "turkish": "uyuşuk, halsiz",
+    "turkishType": "sıfat",
+    "turkishSentence": "Sıcak hava beni tamamen halsiz hissettiriyor."
   },
   {
     "english": "meticulous",
     "englishType": "adjective",
     "englishSentence": "The surgeon was meticulous in her preparation.",
     "level": "C2",
-    "turkish": "kili kirk yaran, cok dikkatli",
-    "turkishType": "sifat",
-    "turkishSentence": "Cerrah hazirliginda cok dikkatliydi."
+    "turkish": "kılı kırk yaran, çok dikkatli",
+    "turkishType": "sıfat",
+    "turkishSentence": "Cerrah hazırlığında çok dikkatliydi."
   },
   {
     "english": "nefarious",
     "englishType": "adjective",
     "englishSentence": "The hacker was arrested for his nefarious activities online.",
     "level": "C2",
-    "turkish": "kotu, hain",
-    "turkishType": "sifat",
-    "turkishSentence": "Hacker, internetteki kotu faaliyetleri nedeniyle tutuklandi."
+    "turkish": "kötü, hain",
+    "turkishType": "sıfat",
+    "turkishSentence": "Hacker, internetteki kötü faaliyetleri nedeniyle tutuklandı."
   },
   {
     "english": "obfuscate",
     "englishType": "verb",
     "englishSentence": "Politicians sometimes use complicated language to obfuscate the truth.",
     "level": "C2",
-    "turkish": "kafa karistirmak, ortbas etmek",
+    "turkish": "kafa karıştırmak, örtbas etmek",
     "turkishType": "fiil",
-    "turkishSentence": "Siyasetciler bazen gercegi ortbas etmek icin karmasik bir dil kullanir."
+    "turkishSentence": "Siyasetçiler bazen gerçeği örtbas etmek için karmaşık bir dil kullanır."
   },
   {
     "english": "paradigm",
@@ -141,25 +141,25 @@
     "level": "C2",
     "turkish": "paradigma, model",
     "turkishType": "isim",
-    "turkishSentence": "DNA'nin kesfi biyolojide yeni bir paradigma olusturdu."
+    "turkishSentence": "DNA'nın keşfi biyolojide yeni bir paradigma oluşturdu."
   },
   {
     "english": "quintessential",
     "englishType": "adjective",
     "englishSentence": "He is the quintessential British gentleman.",
     "level": "C2",
-    "turkish": "mukemmel ornek teskil eden",
-    "turkishType": "sifat",
-    "turkishSentence": "O, mukemmel bir Ingiliz beyefendisi ornegidir."
+    "turkish": "mükemmel örnek teşkil eden",
+    "turkishType": "sıfat",
+    "turkishSentence": "O, mükemmel bir İngiliz beyefendisi örneğidir."
   },
   {
     "english": "resilient",
     "englishType": "adjective",
     "englishSentence": "Children are surprisingly resilient when facing hardship.",
     "level": "C2",
-    "turkish": "direncli, cabuk toparlanan",
-    "turkishType": "sifat",
-    "turkishSentence": "Cocuklar zorlukla karsilastiklarinda sasirtici derecede direnclidir."
+    "turkish": "dirençli, çabuk toparlanan",
+    "turkishType": "sıfat",
+    "turkishSentence": "Çocuklar zorlukla karşılaştıklarında şaşırtıcı derecede dirençlidir."
   },
   {
     "english": "sycophant",
@@ -168,16 +168,16 @@
     "level": "C2",
     "turkish": "dalkavuk, yalaka",
     "turkishType": "isim",
-    "turkishSentence": "CEO, ona hic karsi cikmayan dalkavuklarla cevriliydi."
+    "turkishSentence": "CEO, ona hiç karşı çıkmayan dalkavuklarla çevriliydi."
   },
   {
     "english": "trepidation",
     "englishType": "noun",
     "englishSentence": "He knocked on the boss's door with some trepidation.",
     "level": "C2",
-    "turkish": "korku, endise",
+    "turkish": "korku, endişe",
     "turkishType": "isim",
-    "turkishSentence": "Patronun kapisini biraz endise ile caldi."
+    "turkishSentence": "Patronun kapısını biraz endişe ile çaldı."
   },
   {
     "english": "usurp",
@@ -186,42 +186,42 @@
     "level": "C2",
     "turkish": "gasp etmek, zorla almak",
     "turkishType": "fiil",
-    "turkishSentence": "General, baskandan iktidari zorla almaya calisti."
+    "turkishSentence": "General, başkandan iktidarı zorla almaya çalıştı."
   },
   {
     "english": "vacillate",
     "englishType": "verb",
     "englishSentence": "She vacillated between the two job offers for a week.",
     "level": "C2",
-    "turkish": "bocalamak, kararsiz kalmak",
+    "turkish": "bocalamak, kararsız kalmak",
     "turkishType": "fiil",
-    "turkishSentence": "Iki is teklifi arasinda bir hafta kararsiz kaldi."
+    "turkishSentence": "İki iş teklifi arasında bir hafta kararsız kaldı."
   },
   {
     "english": "wane",
     "englishType": "verb",
     "englishSentence": "His interest in the project began to wane after a few months.",
     "level": "C2",
-    "turkish": "azalmak, zayiflamak",
+    "turkish": "azalmak, zayıflamak",
     "turkishType": "fiil",
-    "turkishSentence": "Projeye olan ilgisi bir kac ay sonra azalmaya basladi."
+    "turkishSentence": "Projeye olan ilgisi bir kaç ay sonra azalmaya başladı."
   },
   {
     "english": "xenophobia",
     "englishType": "noun",
     "englishSentence": "Economic crises often lead to a rise in xenophobia.",
     "level": "C2",
-    "turkish": "yabanci dusmanligi",
+    "turkish": "yabancı düşmanlığı",
     "turkishType": "isim",
-    "turkishSentence": "Ekonomik krizler siklikla yabanci dusmanliginin artmasina yol acar."
+    "turkishSentence": "Ekonomik krizler sıklıkla yabancı düşmanlığının artmasına yol açar."
   },
   {
     "english": "zealot",
     "englishType": "noun",
     "englishSentence": "He was a religious zealot who refused to compromise.",
     "level": "C2",
-    "turkish": "yobaz, asiri fanatik",
+    "turkish": "yobaz, aşırı fanatik",
     "turkishType": "isim",
-    "turkishSentence": "O, uzlasmayi reddeden dini bir fanatikti."
+    "turkishSentence": "O, uzlaşmayı reddeden dini bir fanatikti."
   }
 ]

@@ -15,16 +15,16 @@
     "level": "A1",
     "turkish": "kitap",
     "turkishType": "isim",
-    "turkishSentence": "Bu kitap cok ilginc."
+    "turkishSentence": "Bu kitap çok ilginç."
   },
   {
     "english": "run",
     "englishType": "verb",
     "englishSentence": "They run in the park every morning.",
     "level": "A1",
-    "turkish": "kosmak",
+    "turkish": "koşmak",
     "turkishType": "fiil",
-    "turkishSentence": "Her sabah parkta kosarlar."
+    "turkishSentence": "Her sabah parkta koşarlar."
   },
   {
     "english": "happy",
@@ -32,8 +32,8 @@
     "englishSentence": "She is a happy child.",
     "level": "A1",
     "turkish": "mutlu",
-    "turkishType": "sifat",
-    "turkishSentence": "O mutlu bir cocuk."
+    "turkishType": "sıfat",
+    "turkishSentence": "O mutlu bir çocuk."
   },
   {
     "english": "water",
@@ -42,7 +42,7 @@
     "level": "A1",
     "turkish": "su",
     "turkishType": "isim",
-    "turkishSentence": "Biraz su alabilir miyim, lutfen?"
+    "turkishSentence": "Biraz su alabilir miyim, lütfen?"
   },
   {
     "english": "house",
@@ -51,7 +51,7 @@
     "level": "A1",
     "turkish": "ev",
     "turkishType": "isim",
-    "turkishSentence": "Onlarin evi cok buyuk."
+    "turkishSentence": "Onların evi çok büyük."
   },
   {
     "english": "read",
@@ -60,16 +60,16 @@
     "level": "A1",
     "turkish": "okumak",
     "turkishType": "fiil",
-    "turkishSentence": "Uyumadan once bir kitap okurum."
+    "turkishSentence": "Uyumadan önce bir kitap okurum."
   },
   {
     "english": "cold",
     "englishType": "adjective",
     "englishSentence": "The weather is cold today.",
     "level": "A1",
-    "turkish": "soguk",
-    "turkishType": "sifat",
-    "turkishSentence": "Hava bugun soguk."
+    "turkish": "soğuk",
+    "turkishType": "sıfat",
+    "turkishSentence": "Hava bugün soğuk."
   },
   {
     "english": "cat",
@@ -87,16 +87,16 @@
     "level": "A1",
     "turkish": "oynamak",
     "turkishType": "fiil",
-    "turkishSentence": "Cocuklar bahcede oynar."
+    "turkishSentence": "Çocuklar bahçede oynar."
   },
   {
     "english": "fast",
     "englishType": "adjective",
     "englishSentence": "He drives a fast car.",
     "level": "A1",
-    "turkish": "hizli",
-    "turkishType": "sifat",
-    "turkishSentence": "O hizli bir araba surer."
+    "turkish": "hızlı",
+    "turkishType": "sıfat",
+    "turkishSentence": "O hızlı bir araba sürer."
   },
   {
     "english": "school",
@@ -105,7 +105,7 @@
     "level": "A1",
     "turkish": "okul",
     "turkishType": "isim",
-    "turkishSentence": "Ogrenciler okula otobusle gider."
+    "turkishSentence": "Öğrenciler okula otobüsle gider."
   },
   {
     "english": "write",
@@ -114,25 +114,25 @@
     "level": "A1",
     "turkish": "yazmak",
     "turkishType": "fiil",
-    "turkishSentence": "Lutfen isminizi buraya yazin."
+    "turkishSentence": "Lütfen isminizi buraya yazın."
   },
   {
-    "english": "beautiful",
+    "english": "small",
     "englishType": "adjective",
-    "englishSentence": "She has a beautiful dress.",
+    "englishSentence": "The mouse is very small.",
     "level": "A1",
-    "turkish": "guzel",
-    "turkishType": "sifat",
-    "turkishSentence": "Onun guzel bir elbisesi var."
+    "turkish": "küçük",
+    "turkishType": "sıfat",
+    "turkishSentence": "Fare çok küçüktür."
   },
   {
     "english": "friend",
     "englishType": "noun",
     "englishSentence": "Ali is my best friend.",
     "level": "A1",
-    "turkish": "arkadas",
+    "turkish": "arkadaş",
     "turkishType": "isim",
-    "turkishSentence": "Ali benim en iyi arkadasim."
+    "turkishSentence": "Ali benim en iyi arkadaşım."
   },
   {
     "english": "eat",
@@ -141,7 +141,7 @@
     "level": "A1",
     "turkish": "yemek",
     "turkishType": "fiil",
-    "turkishSentence": "Aksam yemegini saat 7'de yeriz."
+    "turkishSentence": "Akşam yemeğini saat 7'de yeriz."
   },
   {
     "english": "good",
@@ -149,7 +149,7 @@
     "englishSentence": "This is a good movie.",
     "level": "A1",
     "turkish": "iyi",
-    "turkishType": "sifat",
+    "turkishType": "sıfat",
     "turkishSentence": "Bu iyi bir film."
   },
   {
@@ -157,9 +157,9 @@
     "englishType": "noun",
     "englishSentence": "Istanbul is a big city.",
     "level": "A1",
-    "turkish": "sehir",
+    "turkish": "şehir",
     "turkishType": "isim",
-    "turkishSentence": "Istanbul buyuk bir sehirdir."
+    "turkishSentence": "İstanbul büyük bir şehirdir."
   },
   {
     "english": "sleep",
@@ -175,27 +175,27 @@
     "englishType": "adjective",
     "englishSentence": "The tea is too hot.",
     "level": "A1",
-    "turkish": "sicak",
-    "turkishType": "sifat",
-    "turkishSentence": "Cay cok sicak."
+    "turkish": "sıcak",
+    "turkishType": "sıfat",
+    "turkishSentence": "Çay çok sıcak."
   },
   {
     "english": "door",
     "englishType": "noun",
     "englishSentence": "Please close the door.",
     "level": "A1",
-    "turkish": "kapi",
+    "turkish": "kapı",
     "turkishType": "isim",
-    "turkishSentence": "Lutfen kapiyi kapatin."
+    "turkishSentence": "Lütfen kapıyı kapatın."
   },
   {
     "english": "walk",
     "englishType": "verb",
     "englishSentence": "I walk to work every day.",
     "level": "A1",
-    "turkish": "yurumek",
+    "turkish": "yürümek",
     "turkishType": "fiil",
-    "turkishSentence": "Her gun ise yuruyerek giderim."
+    "turkishSentence": "Her gün işe yürüyerek giderim."
   },
   {
     "english": "new",
@@ -203,8 +203,8 @@
     "englishSentence": "I bought a new phone.",
     "level": "A1",
     "turkish": "yeni",
-    "turkishType": "sifat",
-    "turkishSentence": "Yeni bir telefon satin aldim."
+    "turkishType": "sıfat",
+    "turkishSentence": "Yeni bir telefon satın aldım."
   },
   {
     "english": "time",
@@ -213,15 +213,15 @@
     "level": "A1",
     "turkish": "zaman",
     "turkishType": "isim",
-    "turkishSentence": "Cok fazla zamanimiz yok."
+    "turkishSentence": "Çok fazla zamanımız yok."
   },
   {
     "english": "work",
     "englishType": "verb",
     "englishSentence": "He works in a bank.",
     "level": "A1",
-    "turkish": "calismak",
+    "turkish": "çalışmak",
     "turkishType": "fiil",
-    "turkishSentence": "O bir bankada calisir."
+    "turkishSentence": "O bir bankada çalışır."
   }
 ]

@@ -4,6 +4,7 @@ import android.animation.Animator
 import android.animation.AnimatorListenerAdapter
 import android.animation.ObjectAnimator
 import android.graphics.Typeface
+import android.media.MediaPlayer
 import android.os.Bundle
 import android.text.Spannable
 import android.text.SpannableString
@@ -15,6 +16,7 @@ import android.view.animation.DecelerateInterpolator
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.ContextCompat
+import com.bumptech.glide.Glide
 import com.example.proje2.databinding.ActivityFlashcardBinding
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.FieldValue
@@ -35,6 +37,7 @@ class FlashcardActivity : AppCompatActivity() {
     private var initialX = 0f
     private var isGestureStarted = false 
     private var level = "A1"
+    private var mediaPlayer: MediaPlayer? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -53,6 +56,73 @@ class FlashcardActivity : AppCompatActivity() {
 
         setupSwipeAndClickListener()
         fetchWords()
+        binding.btnResetLevel.setOnClickListener {
+            resetLevelProgress()
+        }
+
+        binding.btnSpeak.setOnClickListener {
+            playCurrentWordSound()
+        }
+    }
+
+    private fun playCurrentWordSound() {
+        if (currentIndex >= wordList.size) return
+        val word = wordList[currentIndex]
+        val wordLevel = word.level?.uppercase() ?: level.uppercase()
+        val soundPath = "word_sounds/$wordLevel/${word.english.lowercase()}.mp3"
+
+        try {
+            mediaPlayer?.release()
+            mediaPlayer = MediaPlayer().apply {
+                val descriptor = assets.openFd(soundPath)
+                setDataSource(descriptor.fileDescriptor, descriptor.startOffset, descriptor.length)
+                descriptor.close()
+                prepare()
+                start()
+            }
+        } catch (e: Exception) {
+            e.printStackTrace()
+        }
+    }
+
+    private fun resetLevelProgress() {
+        val user = auth.currentUser ?: return
+        val progressRef = db.collection("users").document(user.uid)
+
+        if (level == "MY_WORDS") {
+            // Kelime Defterim sıfırlama (isLearned = false)
+            progressRef.get().addOnSuccessListener { document ->
+                val myWords = document.get("myWords") as? List<Map<String, Any>> ?: return@addOnSuccessListener
+                val updatedMyWords = myWords.map { word ->
+                    val mutableWord = word.toMutableMap()
+                    mutableWord["isLearned"] = false
+                    mutableWord
+                }
+                progressRef.update("myWords", updatedMyWords)
+                    .addOnSuccessListener {
+                        Toast.makeText(this, "Defteriniz sıfırlandı!", Toast.LENGTH_SHORT).show()
+                        fetchWords() // Yeniden yükle
+                    }
+            }
+        } else {
+            // Normal Seviye sıfırlama (learnedWords içinden bu level'ın kelimelerini sil)
+            progressRef.get().addOnSuccessListener { document ->
+                val learnedWords = document.get("learnedWords") as? List<String> ?: emptyList()
+                
+                // Bu level'a ait kelimeleri bulmak için words_$level koleksiyonunu kullanıyoruz
+                db.collection("words_$level").get()
+                    .addOnSuccessListener { allWordsSnapshot ->
+                        val levelWordEnglishes = allWordsSnapshot.documents.mapNotNull { it.getString("english") }
+                        val updatedLearnedWords = learnedWords.filterNot { it in levelWordEnglishes }
+                        
+                        progressRef.update("learnedWords", updatedLearnedWords)
+                            .addOnSuccessListener {
+                                Toast.makeText(this, "$level Seviyesi sıfırlandı!", Toast.LENGTH_SHORT).show()
+                                fetchWords() // Yeniden yükle
+                            }
+                    }
+            }
+        }
     }
 
     private fun setupSwipeAndClickListener() {
@@ -203,19 +273,43 @@ class FlashcardActivity : AppCompatActivity() {
         }
     }
 
+    private fun finalizeWordList(learnedCount: Int, totalInLevel: Int) {
+        if (wordList.isEmpty()) {
+            binding.cardContainer.visibility = View.GONE
+            binding.instructionText.visibility = View.GONE
+            binding.layoutFinished.visibility = View.VISIBLE
+            
+            if (totalInLevel == 0 && level == "MY_WORDS") {
+                binding.tvFinishedMessage.text = "Henüz kelime defterine kelime eklememişsin."
+                binding.btnResetLevel.visibility = View.GONE
+            } else {
+                binding.tvFinishedMessage.text = "Tebrikler! $level seviyesindeki tüm kelimeleri bitirdin."
+                binding.btnResetLevel.visibility = View.VISIBLE
+            }
+        } else {
+            binding.cardContainer.visibility = View.VISIBLE
+            binding.instructionText.visibility = View.VISIBLE
+            binding.layoutFinished.visibility = View.GONE
+            currentIndex = 0
+            updateCardUI()
+        }
+    }
+
     private fun fetchWords() {
         val currentUser = auth.currentUser ?: return
         
-        if (level == "MY_WORDS") {
-            binding.tvLevelTitle.text = "KELİME DEFTERİM"
-            db.collection("users").document(currentUser.uid).get()
-                .addOnSuccessListener { userDoc ->
+        db.collection("users").document(currentUser.uid).get()
+            .addOnSuccessListener { userDoc ->
+                if (level == "MY_WORDS") {
+                    binding.tvLevelTitle.text = "KELİME DEFTERİM"
                     val myWordsList = userDoc.get("myWords") as? List<Map<String, Any>> ?: emptyList()
+                    val learnedCount = myWordsList.count { it["isLearned"] == true }
+                    
                     wordList.clear()
                     for (map in myWordsList) {
                         val isLearned = map["isLearned"] as? Boolean ?: false
                         if (!isLearned) {
-                            val word = Word(
+                            wordList.add(Word(
                                 english = map["english"] as? String ?: "",
                                 turkish = map["turkish"] as? String ?: "",
                                 englishType = map["englishType"] as? String ?: "",
@@ -223,44 +317,26 @@ class FlashcardActivity : AppCompatActivity() {
                                 englishSentence = map["englishSentence"] as? String ?: "",
                                 turkishSentence = map["turkishSentence"] as? String ?: "",
                                 level = "MY_WORDS"
-                            )
-                            wordList.add(word)
+                            ))
                         }
                     }
-                    wordList.shuffle()
-                    if (wordList.isNotEmpty()) {
-                        updateCardUI()
-                    } else {
-                        Toast.makeText(this, "Kelime defteriniz henüz boş!", Toast.LENGTH_SHORT).show()
-                        finish()
-                    }
-                }
-            return
-        }
-
-        // Once kullanicinin ogrendigi kelimeleri cek
-        db.collection("users").document(currentUser.uid).get()
-            .addOnSuccessListener { userDoc ->
-                val learnedWords = userDoc.get("learnedWords") as? List<String> ?: listOf()
-                
-                // Sonra ilgili seviyedeki kelimeleri cek
-                db.collection("words_$level").get()
-                    .addOnSuccessListener { documents ->
-                        wordList.clear()
-                        for (document in documents) {
-                            val word = document.toObject(Word::class.java).apply { id = document.id }
-                            if (!learnedWords.contains(word.english)) {
-                                wordList.add(word)
+                    finalizeWordList(learnedCount, myWordsList.size)
+                } else {
+                    val learnedWords = userDoc.get("learnedWords") as? List<String> ?: listOf()
+                    db.collection("words_$level").get()
+                        .addOnSuccessListener { documents ->
+                            wordList.clear()
+                            val allWordsCount = documents.size()
+                            for (document in documents) {
+                                val word = document.toObject(Word::class.java).apply { id = document.id }
+                                if (!learnedWords.contains(word.english)) {
+                                    wordList.add(word)
+                                }
                             }
+                            wordList.sortBy { it.english }
+                            finalizeWordList(learnedWords.count { id -> documents.any { it.get("english") == id } }, allWordsCount)
                         }
-                        wordList.shuffle()
-                        if (wordList.isNotEmpty()) {
-                            updateCardUI()
-                        } else {
-                            Toast.makeText(this, "Bu seviyede yeni kelime kalmadı!", Toast.LENGTH_SHORT).show()
-                            finish()
-                        }
-                    }
+                }
             }
     }
 
@@ -278,6 +354,36 @@ class FlashcardActivity : AppCompatActivity() {
         
         binding.tvProgress.text = "${currentIndex + 1} / ${wordList.size}"
 
+        // Görsel Yükleme Mantığı (Assets Klasöründen)
+        val imagePath = "word_images/${level.uppercase()}/${word.english.lowercase()}.png"
+        
+        try {
+            // Assets klasöründe dosya var mı kontrol edelim
+            val inputStream = assets.open(imagePath)
+            inputStream.close()
+            
+            // Dosya varsa Glide ile yükle
+            binding.imageContainer.visibility = View.VISIBLE
+            Glide.with(this)
+                .load("file:///android_asset/$imagePath")
+                .fitCenter()
+                .into(binding.ivWordImage)
+        } catch (e: Exception) {
+            // Dosya yoksa konteynerı gizle
+            binding.imageContainer.visibility = View.GONE
+        }
+
+        // Ses Dosyası Kontrolü
+        val wordLevel = word.level?.uppercase() ?: level.uppercase()
+        val soundPath = "word_sounds/$wordLevel/${word.english.lowercase()}.mp3"
+        try {
+            val inputStream = assets.open(soundPath)
+            inputStream.close()
+            binding.btnSpeak.visibility = View.VISIBLE
+        } catch (e: Exception) {
+            binding.btnSpeak.visibility = View.GONE
+        }
+
         // Renklendirme mantığı
         val (typeColor, typeBg) = when (word.englishType?.lowercase()) {
             "noun" -> Pair(R.color.type_noun, R.color.type_noun_bg)
@@ -291,6 +397,12 @@ class FlashcardActivity : AppCompatActivity() {
         
         binding.tvWordTypeTurkish.setTextColor(ContextCompat.getColor(this, typeColor))
         binding.tvWordTypeTurkish.setBackgroundColor(ContextCompat.getColor(this, typeBg))
+    }
+
+    override fun onDestroy() {
+        super.onDestroy()
+        mediaPlayer?.release()
+        mediaPlayer = null
     }
 
     private fun getBoldSpannable(sentence: String, wordToBold: String): SpannableString {
