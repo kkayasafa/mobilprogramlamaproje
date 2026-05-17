@@ -50,6 +50,7 @@
         android:layout_height="match_parent"
         android:layout_gravity="end"
         app:headerLayout="@layout/nav_header"
-        app:menu="@menu/drawer_menu" />
+        app:menu="@menu/drawer_menu"
+        android:background="@color/bg_main" />
 
 </androidx.drawerlayout.widget.DrawerLayout>

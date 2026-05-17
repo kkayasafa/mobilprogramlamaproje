@@ -44,6 +44,9 @@ class FlashcardActivity : AppCompatActivity() {
         binding = ActivityFlashcardBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
+        // Veri gelene kadar default XML metinlerini göstermemek için kartı gizle.
+        binding.cardContainer.visibility = View.INVISIBLE
+
         level = intent.getStringExtra("LEVEL") ?: "A1"
         binding.tvLevelTitle.text = "$level SEVİYESİ"
 
